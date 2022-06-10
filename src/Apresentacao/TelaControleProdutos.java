@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
@@ -27,10 +28,14 @@ public class TelaControleProdutos extends javax.swing.JPanel {
         inicializaTabela();
     }
 
-    TelaControleProdutos() {
+    public TelaControleProdutos() {
+        initComponents();
     }
     
     public void inicializaTabela(){
+        
+        ((DefaultTableModel) tb_produtos.getModel()).setRowCount(0);
+        
         for(int i = 0; i < listProdutos.size(); i++)
         { 
            this.model.insertRow(i, new Object[]{listProdutos.get(i).getNome()});
