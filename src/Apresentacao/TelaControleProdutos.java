@@ -25,20 +25,25 @@ public class TelaControleProdutos extends javax.swing.JPanel {
         listProdutos = new ArrayList();
         
         this.model = (DefaultTableModel)this.tb_produtos.getModel();
-        inicializaTabela();
+        carregaTabela();
     }
 
-    public TelaControleProdutos() {
+    public TelaControleProdutos(ArrayList<Produto> listProdutos) {
         initComponents();
+        
+        this.listProdutos = listProdutos;
+        
+        this.model = (DefaultTableModel)this.tb_produtos.getModel();
+        carregaTabela();
     }
     
-    public void inicializaTabela(){
+    public void carregaTabela(){
         
         ((DefaultTableModel) tb_produtos.getModel()).setRowCount(0);
         
         for(int i = 0; i < listProdutos.size(); i++)
         { 
-           this.model.insertRow(i, new Object[]{listProdutos.get(i).getNome()});
+           this.model.insertRow(i, new Object[]{listProdutos.get(i).getNome(), listProdutos.get(i).getPreco()});
         }
         this.tb_produtos.setModel(model);
     }

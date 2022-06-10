@@ -217,7 +217,7 @@ public class TelaCadastroProdutos extends javax.swing.JPanel {
 
     private void bt_voltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_voltarMouseClicked
         
-        TelaPrincipalForm.telaControleProdutos = new TelaControleProdutos();
+        TelaPrincipalForm.telaControleProdutos = new TelaControleProdutos(listProdutos);
         JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);   
         janela.getContentPane().removeAll(); 
         janela.add(TelaPrincipalForm.telaControleProdutos, BorderLayout.CENTER);
