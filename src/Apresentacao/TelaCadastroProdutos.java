@@ -18,14 +18,13 @@ public class TelaCadastroProdutos extends javax.swing.JPanel {
         initComponents();
 
         this.listProdutos = listProdutos;
-        
         listProdutos = new ArrayList();
         
         this.model = (DefaultTableModel)this.tb_produtos.getModel();
-        carregaTabela();
+        carregarTabela();
     }
    
-     public void carregaTabela(){
+     public void carregarTabela(){
          
         ((DefaultTableModel) tb_produtos.getModel()).setRowCount(0);
          
@@ -210,7 +209,7 @@ public class TelaCadastroProdutos extends javax.swing.JPanel {
            {
                listProdutos.add(obterProduto());
                limparCampos();
-               carregaTabela();
+               carregarTabela();
            } 
            else
            {
@@ -220,8 +219,7 @@ public class TelaCadastroProdutos extends javax.swing.JPanel {
         catch(Exception e)
         {
             JOptionPane.showMessageDialog(null, "É necessário preencher todos os campos!", "Cadastrar Produtos!", JOptionPane.ERROR_MESSAGE);
-        }
-        
+        } 
     }//GEN-LAST:event_bt_cadastrarMouseClicked
 
     private void bt_voltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_voltarMouseClicked

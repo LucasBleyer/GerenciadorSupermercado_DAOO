@@ -1,8 +1,6 @@
 
 package Apresentacao;
 
-import Apresentacao.TelaLogin;
-import Apresentacao.TelaPrincipalForm;
 import Dominio.ModuloPessoa.Administrador;
 import Dominio.ModuloSupermercado.Produto;
 import java.awt.BorderLayout;
@@ -26,7 +24,7 @@ public class TelaControleProdutos extends javax.swing.JPanel {
         listProdutos = new ArrayList();
         
         this.model = (DefaultTableModel)this.tb_produtos.getModel();
-        carregaTabela();
+        carregarTabela();
         
         validadorBotoesListaVazia();
     }
@@ -37,10 +35,10 @@ public class TelaControleProdutos extends javax.swing.JPanel {
         this.listProdutos = listProdutos;
         
         this.model = (DefaultTableModel)this.tb_produtos.getModel();
-        carregaTabela();
+        carregarTabela();
     }
     
-    public void carregaTabela(){
+    public void carregarTabela(){
         
         ((DefaultTableModel) tb_produtos.getModel()).setRowCount(0);
         

@@ -20,14 +20,13 @@ public class TelaEdicaoProdutos extends javax.swing.JPanel {
         initComponents();
         
         this.listProdutos = listProdutos;
-        
         listProdutos = new ArrayList();
 
         this.model = (DefaultTableModel)this.tb_produtos.getModel();
-        carregaTabela();
+        carregarTabela();
     }
     
-    public void carregaTabela(){
+    public void carregarTabela(){
          
         ((DefaultTableModel) tb_produtos.getModel()).setRowCount(0);
          
@@ -52,7 +51,7 @@ public class TelaEdicaoProdutos extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tb_produtos = new javax.swing.JTable();
         bt_voltar = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        lb_produtoEditado = new javax.swing.JLabel();
 
         jLabel1.setText("Editar Produto");
 
@@ -133,7 +132,7 @@ public class TelaEdicaoProdutos extends javax.swing.JPanel {
             }
         });
 
-        jLabel4.setText("<produtoEditado>");
+        lb_produtoEditado.setText("<produtoEditado>");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -160,7 +159,7 @@ public class TelaEdicaoProdutos extends javax.swing.JPanel {
                         .addGap(164, 164, 164)
                         .addComponent(jLabel1)
                         .addGap(85, 85, 85)
-                        .addComponent(jLabel4)))
+                        .addComponent(lb_produtoEditado)))
                 .addContainerGap(135, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -172,7 +171,7 @@ public class TelaEdicaoProdutos extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(jLabel4))
+                            .addComponent(lb_produtoEditado))
                         .addGap(65, 65, 65)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -210,9 +209,41 @@ public class TelaEdicaoProdutos extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public void obterProdutoEditado(){
+        
+        for (int i = 0; i < listProdutos.size(); i++)
+        {
+            if(this.selecionado.equals(listProdutos.get(i).getNome()))
+            {  
+               listProdutos.get(i).setNome(tf_nome.getText());
+                double preco = Double.valueOf(tf_preco.getText());
+                listProdutos.get(i).setPreco(preco); 
+            }
+        }
+    }
+    
     private void bt_editarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_editarMouseClicked
         
-        
+        Object temp;
+        int column = 0;
+        int row = this.tb_produtos.getSelectedRow(); 
+        temp = this.tb_produtos.getModel().getValueAt(row, column); 
+
+        Produto p = null;
+        try{
+            if(temp != null)
+            {
+                this.selecionado = temp.toString();
+                obterProdutoEditado();
+            }
+            else
+            {
+                throw new Exception();
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Selecione um Produto da tabela!", "Erro!", JOptionPane.ERROR_MESSAGE);
+        }
+        carregarTabela();
     }//GEN-LAST:event_bt_editarMouseClicked
 
     private void bt_voltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_voltarMouseClicked
@@ -231,7 +262,7 @@ public class TelaEdicaoProdutos extends javax.swing.JPanel {
         int row = this.tb_produtos.getSelectedRow(); 
         temp = this.tb_produtos.getModel().getValueAt(row, column); 
 
-        Produto p = null;
+        Produto produto = null;
         try{
             if(temp != null)
             {
@@ -241,7 +272,8 @@ public class TelaEdicaoProdutos extends javax.swing.JPanel {
                 {  
                     if(this.selecionado.equals(listProdutos.get(i).getNome()))
                     {  
-                        p = (Produto)listProdutos.get(i);
+                        lb_produtoEditado.setText(selecionado);
+                        produto = (Produto)listProdutos.get(i);
                     }
                 }
             }
@@ -261,9 +293,9 @@ public class TelaEdicaoProdutos extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lb_produtoEditado;
     private javax.swing.JTable tb_produtos;
     private javax.swing.JTextField tf_nome;
     private javax.swing.JTextField tf_preco;
