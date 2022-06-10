@@ -1,9 +1,9 @@
 
 package Apresentacao;
 
-public class TelaEdicaoProduto extends javax.swing.JPanel {
+public class TelaEdicaoProdutos extends javax.swing.JPanel {
 
-    public TelaEdicaoProduto() {
+    public TelaEdicaoProdutos() {
         initComponents();
     }
 

@@ -2,15 +2,37 @@
 package Apresentacao;
 
 import Dominio.ModuloPessoa.Administrador;
+import Dominio.ModuloSupermercado.Produto;
 import java.awt.BorderLayout;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
 
 public class TelaControleProdutos extends javax.swing.JPanel {
   
+    ArrayList<Produto> listProdutos;
+    DefaultTableModel model;
+    
     public TelaControleProdutos(Administrador adm) {
         initComponents();
         lb_nomeAdministrador.setText(adm.getNome());
+        
+        listProdutos = new ArrayList();
+        
+        this.model = (DefaultTableModel)this.tb_produtos.getModel();
+        inicializaTabela();
+    }
+
+    TelaControleProdutos() {
+    }
+    
+    public void inicializaTabela(){
+        for(int i = 0; i < listProdutos.size(); i++)
+        { 
+           this.model.insertRow(i, new Object[]{listProdutos.get(i).getNome()});
+        }
+        this.tb_produtos.setModel(model);
     }
 
     @SuppressWarnings("unchecked")
@@ -24,8 +46,8 @@ public class TelaControleProdutos extends javax.swing.JPanel {
         bt_editar = new javax.swing.JButton();
         bt_excluir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        tb_produtos = new javax.swing.JTable();
+        bt_deslogar = new javax.swing.JButton();
 
         jLabel1.setText("Controle de Produtos");
 
@@ -54,7 +76,7 @@ public class TelaControleProdutos extends javax.swing.JPanel {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tb_produtos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -156,9 +178,14 @@ public class TelaControleProdutos extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tb_produtos);
 
-        jButton1.setText("Deslogar");
+        bt_deslogar.setText("Deslogar");
+        bt_deslogar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_deslogarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -172,7 +199,7 @@ public class TelaControleProdutos extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lb_nomeAdministrador)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1))
+                        .addComponent(bt_deslogar))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(bt_cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -193,7 +220,7 @@ public class TelaControleProdutos extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(lb_nomeAdministrador)
-                    .addComponent(jButton1))
+                    .addComponent(bt_deslogar))
                 .addGap(55, 55, 55)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(73, Short.MAX_VALUE))
@@ -212,7 +239,7 @@ public class TelaControleProdutos extends javax.swing.JPanel {
 
     private void bt_cadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_cadastrarMouseClicked
         
-        TelaPrincipalForm.telaCadastroProdutos = new TelaCadastroProdutos();  
+        TelaPrincipalForm.telaCadastroProdutos = new TelaCadastroProdutos(listProdutos);  
         JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);
         janela.getContentPane().remove(TelaPrincipalForm.telaControleProdutos);
         janela.add(TelaPrincipalForm.telaCadastroProdutos, BorderLayout.CENTER); 
@@ -221,7 +248,11 @@ public class TelaControleProdutos extends javax.swing.JPanel {
 
     private void bt_editarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_editarMouseClicked
         
-        
+        TelaPrincipalForm.telaEdicaoProdutos = new TelaEdicaoProdutos();  
+        JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);
+        janela.getContentPane().remove(TelaPrincipalForm.telaControleProdutos);
+        janela.add(TelaPrincipalForm.telaEdicaoProdutos, BorderLayout.CENTER); 
+        janela.pack();
     }//GEN-LAST:event_bt_editarMouseClicked
 
     private void bt_excluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_excluirMouseClicked
@@ -229,16 +260,25 @@ public class TelaControleProdutos extends javax.swing.JPanel {
         
     }//GEN-LAST:event_bt_excluirMouseClicked
 
+    private void bt_deslogarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_deslogarMouseClicked
+        
+        TelaPrincipalForm.telaLogin = new TelaLogin();
+        JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);  
+        janela.getContentPane().remove(TelaPrincipalForm.telaControleProdutos); 
+        janela.add(TelaPrincipalForm.telaLogin, BorderLayout.CENTER);   
+        janela.pack();
+    }//GEN-LAST:event_bt_deslogarMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_cadastrar;
+    private javax.swing.JButton bt_deslogar;
     private javax.swing.JButton bt_editar;
     private javax.swing.JButton bt_excluir;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lb_nomeAdministrador;
+    private javax.swing.JTable tb_produtos;
     // End of variables declaration//GEN-END:variables
 }
