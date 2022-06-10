@@ -49,7 +49,7 @@ public class TelaLogin extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(218, Short.MAX_VALUE)
+                .addContainerGap(165, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -112,10 +112,11 @@ public class TelaLogin extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(panel_login_adm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(102, 102, 102)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(73, 73, 73)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
@@ -129,12 +130,8 @@ public class TelaLogin extends javax.swing.JPanel {
                                         .addComponent(rb_adm)
                                         .addGap(62, 62, 62)
                                         .addComponent(rb_cliente))
-                                    .addComponent(bt_entrar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(103, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(panel_login_adm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(137, 137, 137))))
+                                    .addComponent(bt_entrar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,7 +150,7 @@ public class TelaLogin extends javax.swing.JPanel {
                     .addComponent(jLabel5)
                     .addComponent(rb_adm)
                     .addComponent(rb_cliente))
-                .addGap(40, 40, 40)
+                .addGap(41, 41, 41)
                 .addComponent(panel_login_adm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(bt_entrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -214,10 +211,10 @@ public class TelaLogin extends javax.swing.JPanel {
         {
             if(!tf_nome.getText().isEmpty() && !tf_cpf.getText().isEmpty() && !tf_login_adm.getText().isEmpty() && !tf_senha_adm.getText().isEmpty())
             {
-                TelaPrincipalForm.telaCadastroProdutos = new TelaControleProdutos((Administrador)obterAdministrador());  
+                TelaPrincipalForm.telaControleProdutos = new TelaControleProdutos((Administrador)obterAdministrador());  
                 JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);
                 janela.getContentPane().remove(TelaPrincipalForm.telaLogin);
-                janela.add(TelaPrincipalForm.telaCadastroProdutos, BorderLayout.CENTER); 
+                janela.add(TelaPrincipalForm.telaControleProdutos, BorderLayout.CENTER); 
                 janela.pack();
             }
             else
@@ -237,10 +234,10 @@ public class TelaLogin extends javax.swing.JPanel {
         {
             if(!tf_nome.getText().isEmpty() && !tf_cpf.getText().isEmpty())
             {
-//                TelaPrincipalForm.telaCadastroProdutos = new TelaControleProdutos();  
+//                TelaPrincipalForm.telaControleProdutos = new TelaControleProdutos();  
 //                JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);
 //                janela.getContentPane().remove(TelaPrincipalForm.telaLogin);
-//                janela.add(TelaPrincipalForm.telaCadastroProdutos, BorderLayout.CENTER); 
+//                janela.add(TelaPrincipalForm.telaControleProdutos, BorderLayout.CENTER); 
 //                janela.pack();
             }
             else
