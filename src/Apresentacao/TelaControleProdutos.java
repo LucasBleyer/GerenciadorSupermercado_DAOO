@@ -17,6 +17,8 @@ public class TelaControleProdutos extends javax.swing.JPanel {
     ArrayList<Produto> listProdutos;
     DefaultTableModel model;
     
+    String selecionado = null;
+    
     public TelaControleProdutos(Administrador adm) {
         initComponents();
         lb_nomeAdministrador.setText(adm.getNome());
@@ -25,6 +27,8 @@ public class TelaControleProdutos extends javax.swing.JPanel {
         
         this.model = (DefaultTableModel)this.tb_produtos.getModel();
         carregaTabela();
+        
+        validadorBotoesListaVazia();
     }
 
     public TelaControleProdutos(ArrayList<Produto> listProdutos) {
@@ -45,6 +49,20 @@ public class TelaControleProdutos extends javax.swing.JPanel {
            this.model.insertRow(i, new Object[]{listProdutos.get(i).getNome(), listProdutos.get(i).getPreco()});
         }
         this.tb_produtos.setModel(model);
+    }
+    
+    public void validadorBotoesListaVazia(){
+        
+        if(listProdutos.isEmpty())
+        {
+            bt_excluir.setEnabled(false);
+            bt_editar.setEnabled(false);
+        }
+        else
+        {
+            bt_excluir.setEnabled(true);
+            bt_editar.setEnabled(true);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -210,7 +228,7 @@ public class TelaControleProdutos extends javax.swing.JPanel {
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lb_nomeAdministrador)
-                        .addGap(18, 18, 18)
+                        .addGap(52, 52, 52)
                         .addComponent(bt_deslogar))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -261,7 +279,7 @@ public class TelaControleProdutos extends javax.swing.JPanel {
 
     private void bt_editarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_editarMouseClicked
         
-        TelaPrincipalForm.telaEdicaoProdutos = new TelaEdicaoProdutos();  
+        TelaPrincipalForm.telaEdicaoProdutos = new TelaEdicaoProdutos(listProdutos);  
         JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);
         janela.getContentPane().remove(TelaPrincipalForm.telaControleProdutos);
         janela.add(TelaPrincipalForm.telaEdicaoProdutos, BorderLayout.CENTER); 
@@ -270,15 +288,47 @@ public class TelaControleProdutos extends javax.swing.JPanel {
     }//GEN-LAST:event_bt_editarMouseClicked
 
     private void bt_excluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_excluirMouseClicked
-       
-        
+                   
+        switch(JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir o produto", "Exclusão de produtos", JOptionPane.YES_NO_OPTION))
+        {
+            case 0: 
+                    Object temp;
+                    int column = 0;
+                    int row = this.tb_produtos.getSelectedRow();  
+                    temp = this.tb_produtos.getModel().getValueAt(row, column); 
+                    Produto produto = null;
+
+                    try{
+                        if(temp != null)
+                        {
+                            this.selecionado = temp.toString();
+                            for(int i = 0; i < listProdutos.size(); i++)
+                            {  
+                                if(this.selecionado.equals(listProdutos.get(i).getNome()))
+                                {  
+                                    this.model.removeRow(i);
+                                    produto = (Produto) listProdutos.remove(i);
+                                }
+                            }
+                        }
+                    }
+                    catch(Exception e)
+                    {
+                        JOptionPane.showMessageDialog(null, "Selecione um Produto da tabela!", "Exclusão de Produtos!", JOptionPane.ERROR_MESSAGE);
+                    }
+                    
+                    break;
+            case 1:
+                    break;
+        }
+        validadorBotoesListaVazia();
     }//GEN-LAST:event_bt_excluirMouseClicked
 
     private void bt_deslogarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_deslogarMouseClicked
         
         switch(JOptionPane.showConfirmDialog(null, "Você têm certeza disso?", "Deslogar ", JOptionPane.YES_NO_OPTION))
         {
-           case 0 ://botão sim
+           case 0 :
                     TelaPrincipalForm.telaLogin = new TelaLogin();
                     JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);  
                     janela.getContentPane().remove(TelaPrincipalForm.telaControleProdutos); 
@@ -286,7 +336,7 @@ public class TelaControleProdutos extends javax.swing.JPanel {
                     janela.pack();
                break;
                
-           case 1 ://botão não
+           case 1 :
                break;
        }
     }//GEN-LAST:event_bt_deslogarMouseClicked
