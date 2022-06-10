@@ -1,11 +1,14 @@
 
 package Apresentacao;
 
+import Apresentacao.TelaLogin;
+import Apresentacao.TelaPrincipalForm;
 import Dominio.ModuloPessoa.Administrador;
 import Dominio.ModuloSupermercado.Produto;
 import java.awt.BorderLayout;
 import java.util.ArrayList;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
@@ -262,11 +265,19 @@ public class TelaControleProdutos extends javax.swing.JPanel {
 
     private void bt_deslogarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_deslogarMouseClicked
         
-        TelaPrincipalForm.telaLogin = new TelaLogin();
-        JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);  
-        janela.getContentPane().remove(TelaPrincipalForm.telaControleProdutos); 
-        janela.add(TelaPrincipalForm.telaLogin, BorderLayout.CENTER);   
-        janela.pack();
+        switch(JOptionPane.showConfirmDialog(null, "Você têm certeza disso?", "Deslogar ", JOptionPane.YES_NO_OPTION))
+        {
+           case 0 ://botão sim
+                    TelaPrincipalForm.telaLogin = new TelaLogin();
+                    JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);  
+                    janela.getContentPane().remove(TelaPrincipalForm.telaControleProdutos); 
+                    janela.add(TelaPrincipalForm.telaLogin, BorderLayout.CENTER);   
+                    janela.pack();
+               break;
+               
+           case 1 ://botão não
+               break;
+       }
     }//GEN-LAST:event_bt_deslogarMouseClicked
 
 
