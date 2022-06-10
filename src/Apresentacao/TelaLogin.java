@@ -214,7 +214,7 @@ public class TelaLogin extends javax.swing.JPanel {
         {
             if(!tf_nome.getText().isEmpty() && !tf_cpf.getText().isEmpty() && !tf_login_adm.getText().isEmpty() && !tf_senha_adm.getText().isEmpty())
             {
-                TelaPrincipalForm.telaCadastroProdutos = new TelaCadastroProdutos();  
+                TelaPrincipalForm.telaCadastroProdutos = new TelaControleProdutos((Administrador)obterAdministrador());  
                 JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);
                 janela.getContentPane().remove(TelaPrincipalForm.telaLogin);
                 janela.add(TelaPrincipalForm.telaCadastroProdutos, BorderLayout.CENTER); 
@@ -237,11 +237,11 @@ public class TelaLogin extends javax.swing.JPanel {
         {
             if(!tf_nome.getText().isEmpty() && !tf_cpf.getText().isEmpty())
             {
-                TelaPrincipalForm.telaCadastroProdutos = new TelaCadastroProdutos();  
-                JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);
-                janela.getContentPane().remove(TelaPrincipalForm.telaLogin);
-                janela.add(TelaPrincipalForm.telaCadastroProdutos, BorderLayout.CENTER); 
-                janela.pack();
+//                TelaPrincipalForm.telaCadastroProdutos = new TelaControleProdutos();  
+//                JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);
+//                janela.getContentPane().remove(TelaPrincipalForm.telaLogin);
+//                janela.add(TelaPrincipalForm.telaCadastroProdutos, BorderLayout.CENTER); 
+//                janela.pack();
             }
             else
             {

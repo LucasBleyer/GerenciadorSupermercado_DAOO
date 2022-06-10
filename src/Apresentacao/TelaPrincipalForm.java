@@ -7,7 +7,7 @@ public class TelaPrincipalForm extends javax.swing.JFrame {
 
     static TelaAcessoSistema telaAcessoSistema;
     static TelaLogin telaLogin;
-    static TelaCadastroProdutos telaCadastroProdutos;
+    static TelaControleProdutos telaCadastroProdutos;
     
     public TelaPrincipalForm() {
         initComponents();
