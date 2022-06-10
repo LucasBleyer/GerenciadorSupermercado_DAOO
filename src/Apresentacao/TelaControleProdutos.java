@@ -250,12 +250,13 @@ public class TelaControleProdutos extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_cadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_cadastrarMouseClicked
-        
+
         TelaPrincipalForm.telaCadastroProdutos = new TelaCadastroProdutos(listProdutos);  
         JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);
         janela.getContentPane().remove(TelaPrincipalForm.telaControleProdutos);
         janela.add(TelaPrincipalForm.telaCadastroProdutos, BorderLayout.CENTER); 
         janela.pack();
+        
     }//GEN-LAST:event_bt_cadastrarMouseClicked
 
     private void bt_editarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_editarMouseClicked
@@ -265,6 +266,7 @@ public class TelaControleProdutos extends javax.swing.JPanel {
         janela.getContentPane().remove(TelaPrincipalForm.telaControleProdutos);
         janela.add(TelaPrincipalForm.telaEdicaoProdutos, BorderLayout.CENTER); 
         janela.pack();
+        
     }//GEN-LAST:event_bt_editarMouseClicked
 
     private void bt_excluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_excluirMouseClicked
