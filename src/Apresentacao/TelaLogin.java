@@ -212,7 +212,7 @@ public class TelaLogin extends javax.swing.JPanel {
         {
             if(!tf_nome.getText().isEmpty() && !tf_cpf.getText().isEmpty() && !tf_login_adm.getText().isEmpty() && !tf_senha_adm.getText().isEmpty())
             {
-                TelaPrincipalForm.telaControleProdutos = new TelaControleProdutos(tf_nome.getText());  
+                TelaPrincipalForm.telaControleProdutos = new TelaControleProdutos(obterAdministrador());  
                 JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);
                 janela.getContentPane().remove(TelaPrincipalForm.telaLogin);
                 janela.add(TelaPrincipalForm.telaControleProdutos, BorderLayout.CENTER); 

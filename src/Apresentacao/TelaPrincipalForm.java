@@ -5,7 +5,9 @@ import java.awt.BorderLayout;
 import java.awt.MenuComponent;
 
 public class TelaPrincipalForm extends javax.swing.JFrame {
-
+    
+    static String nomeAdm;
+    
     static TelaAcessoSistema telaAcessoSistema;
     static TelaLogin telaLogin;
     
