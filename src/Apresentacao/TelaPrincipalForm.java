@@ -2,11 +2,8 @@
 package Apresentacao;
 
 import java.awt.BorderLayout;
-import java.awt.MenuComponent;
 
 public class TelaPrincipalForm extends javax.swing.JFrame {
-    
-    static String nomeAdm;
     
     static TelaAcessoSistema telaAcessoSistema;
     static TelaLogin telaLogin;
@@ -14,7 +11,8 @@ public class TelaPrincipalForm extends javax.swing.JFrame {
     static TelaControleProdutos telaControleProdutos;
     static TelaCadastroProdutos telaCadastroProdutos;
     static TelaEdicaoProdutos telaEdicaoProdutos;
-    static MenuComponent telaCasdastroProdutos;
+    
+    static TelaCompraProdutos telaCompraProdutos;
     
     public TelaPrincipalForm() {
         initComponents();
