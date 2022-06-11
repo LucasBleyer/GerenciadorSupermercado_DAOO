@@ -160,10 +160,10 @@ public class TelaControleProdutos extends javax.swing.JPanel {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setText("Usuário:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 22, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, -1, -1));
 
         lb_nomeAdministrador.setText("<nomeAdministrador>");
-        jPanel1.add(lb_nomeAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 22, -1, -1));
+        jPanel1.add(lb_nomeAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, -1, -1));
 
         bt_deslogar.setText("Deslogar");
         bt_deslogar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -171,7 +171,7 @@ public class TelaControleProdutos extends javax.swing.JPanel {
                 bt_deslogarMouseClicked(evt);
             }
         });
-        jPanel1.add(bt_deslogar, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 19, -1, -1));
+        jPanel1.add(bt_deslogar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 12, -1, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -274,23 +274,6 @@ public class TelaControleProdutos extends javax.swing.JPanel {
         validadorBotoesListaVazia();
     }//GEN-LAST:event_bt_excluirMouseClicked
 
-    private void bt_deslogarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_deslogarMouseClicked
-        
-        switch(JOptionPane.showConfirmDialog(null, "Você têm certeza disso?", "Deslogar ", JOptionPane.YES_NO_OPTION))
-        {
-           case 0 :
-                    TelaPrincipalForm.telaLogin = new TelaLogin(TelaPrincipalForm.listProdutos);
-                    JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);  
-                    janela.getContentPane().remove(TelaPrincipalForm.telaControleProdutos); 
-                    janela.add(TelaPrincipalForm.telaLogin, BorderLayout.CENTER);   
-                    janela.pack();
-               break;
-               
-           case 1 :
-               break;
-       }
-    }//GEN-LAST:event_bt_deslogarMouseClicked
-
     private void tb_produtosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_produtosMouseClicked
         
         Object temp;
@@ -322,6 +305,23 @@ public class TelaControleProdutos extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Selecione um Produto da tabela!", "Erro!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_tb_produtosMouseClicked
+
+    private void bt_deslogarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_deslogarMouseClicked
+
+        switch(JOptionPane.showConfirmDialog(null, "Você têm certeza disso?", "Deslogar ", JOptionPane.YES_NO_OPTION))
+        {
+            case 0 :
+            TelaPrincipalForm.telaLogin = new TelaLogin(TelaPrincipalForm.listProdutos);
+            JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);
+            janela.getContentPane().remove(TelaPrincipalForm.telaControleProdutos);
+            janela.add(TelaPrincipalForm.telaLogin, BorderLayout.CENTER);
+            janela.pack();
+            break;
+
+            case 1 :
+            break;
+        }
+    }//GEN-LAST:event_bt_deslogarMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
