@@ -36,6 +36,8 @@ public class TelaControleProdutos extends javax.swing.JPanel {
         
         this.model = (DefaultTableModel)this.tb_produtos.getModel();
         carregarTabela();
+        
+        validadorBotoesListaVazia();
     }
     
     public void carregarTabela(){
