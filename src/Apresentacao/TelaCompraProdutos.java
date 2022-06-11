@@ -13,18 +13,15 @@ import javax.swing.table.DefaultTableModel;
 public class TelaCompraProdutos extends javax.swing.JPanel {
 
     DefaultTableModel model;
-    
-    Pessoa cliente;
+    String selecionado = null;
     
     public TelaCompraProdutos(ArrayList<Produto> listProdutos, Pessoa cliente) {
         initComponents();
         
         listProdutos = new ArrayList();
         
-        this.cliente = cliente;
-        lb_nomeCliente.setText(this.cliente.getNome());
-        
-        listProdutos = new ArrayList();
+        this.model = (DefaultTableModel)this.tb_produtos.getModel();
+        carregarTabela();
     }
     
     public void carregarTabela(){
@@ -110,6 +107,11 @@ public class TelaCompraProdutos extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tb_produtos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tb_produtosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tb_produtos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -159,6 +161,31 @@ public class TelaCompraProdutos extends javax.swing.JPanel {
             break;
         }
     }//GEN-LAST:event_bt_deslogarMouseClicked
+
+    private void tb_produtosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_produtosMouseClicked
+        
+        Object temp;
+        int column = 0;
+        int row = this.tb_produtos.getSelectedRow(); 
+        temp = this.tb_produtos.getModel().getValueAt(row, column); 
+
+        Produto p = null;
+        try{
+            if(temp != null){
+                this.selecionado = temp.toString();
+                for(int i=0; i<TelaPrincipalForm.listProdutos.size(); i++){  
+                    if(this.selecionado.equals(TelaPrincipalForm.listProdutos.get(i).getNome())){  
+                        p = (Produto) TelaPrincipalForm.listProdutos.get(i);
+                    }
+                }
+            }
+            else{
+                throw new Exception();
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Selecione um Produto da tabela!", "Erro!", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_tb_produtosMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

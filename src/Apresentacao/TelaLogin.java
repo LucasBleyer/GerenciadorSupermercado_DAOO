@@ -231,8 +231,8 @@ public class TelaLogin extends javax.swing.JPanel {
     
     public void validadorCliente(){
         
-        try
-        {
+//        try
+//        {
             if(!tf_nome.getText().isEmpty() && !tf_cpf.getText().isEmpty())
             {
                 TelaPrincipalForm.telaCompraProdutos = new TelaCompraProdutos(TelaPrincipalForm.listProdutos, obterCliente());  
@@ -241,15 +241,15 @@ public class TelaLogin extends javax.swing.JPanel {
                 janela.add(TelaPrincipalForm.telaCompraProdutos, BorderLayout.CENTER); 
                 janela.pack();
             }
-            else
-            {
-                throw new Exception();
-            }
-        }
-        catch(Exception e)
-        {
-            JOptionPane.showMessageDialog(null, "É necessário completar o cadastro para acessar o sistema como Cliente", "Erro!", JOptionPane.ERROR_MESSAGE);
-        }
+//            else
+//            {
+//                throw new Exception();
+//            }
+//        }
+//        catch(Exception e)
+//        {
+//            JOptionPane.showMessageDialog(null, "É necessário completar o cadastro para acessar o sistema como Cliente", "Erro!", JOptionPane.ERROR_MESSAGE);
+//        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
