@@ -7,6 +7,7 @@ import java.awt.BorderLayout;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
@@ -138,7 +139,7 @@ public class TelaControleProdutos extends javax.swing.JPanel {
                 java.lang.String.class, java.lang.Double.class
             };
             boolean[] canEdit = new boolean [] {
-                true, false
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -298,19 +299,26 @@ public class TelaControleProdutos extends javax.swing.JPanel {
         temp = this.tb_produtos.getModel().getValueAt(row, column); 
 
         Produto p = null;
-        try{
-            if(temp != null){
+        try
+        {
+            if(temp != null)
+            {
                 this.selecionado = temp.toString();
-                for(int i=0; i<TelaPrincipalForm.listProdutos.size(); i++){  
-                    if(this.selecionado.equals(TelaPrincipalForm.listProdutos.get(i).getNome())){  
+                for(int i = 0; i< TelaPrincipalForm.listProdutos.size(); i++)
+                {  
+                    if(this.selecionado.equals(TelaPrincipalForm.listProdutos.get(i).getNome()))
+                    {  
                         p = (Produto) TelaPrincipalForm.listProdutos.get(i);
                     }
                 }
             }
-            else{
+            else
+            {
                 throw new Exception();
             }
-        }catch(Exception e){
+        }
+        catch(Exception e)
+        {
             JOptionPane.showMessageDialog(null, "Selecione um Produto da tabela!", "Erro!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_tb_produtosMouseClicked

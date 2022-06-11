@@ -15,10 +15,17 @@ public class TelaCompraProdutos extends javax.swing.JPanel {
     DefaultTableModel model;
     String selecionado = null;
     
+    ArrayList<Produto> listProdutosCarrinho;
+
+    public TelaCompraProdutos() {
+    }
+    
     public TelaCompraProdutos(ArrayList<Produto> listProdutos, Pessoa cliente) {
         initComponents();
         
         listProdutos = new ArrayList();
+        
+        listProdutosCarrinho = new ArrayList();
         
         this.model = (DefaultTableModel)this.tb_produtos.getModel();
         carregarTabela();
@@ -46,6 +53,7 @@ public class TelaCompraProdutos extends javax.swing.JPanel {
         bt_deslogar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tb_produtos = new javax.swing.JTable();
+        bt_adicionarCarrinho = new javax.swing.JButton();
 
         jLabel1.setText("Selecione os Produtos que deseja comprar");
 
@@ -107,12 +115,14 @@ public class TelaCompraProdutos extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tb_produtos.addMouseListener(new java.awt.event.MouseAdapter() {
+        jScrollPane1.setViewportView(tb_produtos);
+
+        bt_adicionarCarrinho.setText("Adicionar ao Carrinho");
+        bt_adicionarCarrinho.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tb_produtosMouseClicked(evt);
+                bt_adicionarCarrinhoMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tb_produtos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -129,8 +139,10 @@ public class TelaCompraProdutos extends javax.swing.JPanel {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(175, 175, 175)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(561, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(62, 62, 62)
+                        .addComponent(bt_adicionarCarrinho, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(349, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,7 +152,9 @@ public class TelaCompraProdutos extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
                 .addGap(28, 28, 28)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_adicionarCarrinho, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(64, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -162,7 +176,7 @@ public class TelaCompraProdutos extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_bt_deslogarMouseClicked
 
-    private void tb_produtosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_produtosMouseClicked
+    private void bt_adicionarCarrinhoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_adicionarCarrinhoMouseClicked
         
         Object temp;
         int column = 0;
@@ -170,25 +184,34 @@ public class TelaCompraProdutos extends javax.swing.JPanel {
         temp = this.tb_produtos.getModel().getValueAt(row, column); 
 
         Produto p = null;
-        try{
-            if(temp != null){
+        try
+        {
+            if(temp != null)
+            {
                 this.selecionado = temp.toString();
-                for(int i=0; i<TelaPrincipalForm.listProdutos.size(); i++){  
-                    if(this.selecionado.equals(TelaPrincipalForm.listProdutos.get(i).getNome())){  
+                for(int i = 0; i < TelaPrincipalForm.listProdutos.size(); i++)
+                {  
+                    if(this.selecionado.equals(TelaPrincipalForm.listProdutos.get(i).getNome()))
+                    {  
                         p = (Produto) TelaPrincipalForm.listProdutos.get(i);
+                        listProdutosCarrinho.add(p);
                     }
                 }
             }
-            else{
+            else
+            {
                 throw new Exception();
             }
-        }catch(Exception e){
+        }
+        catch(Exception e)
+        {
             JOptionPane.showMessageDialog(null, "Selecione um Produto da tabela!", "Erro!", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_tb_produtosMouseClicked
+    }//GEN-LAST:event_bt_adicionarCarrinhoMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_adicionarCarrinho;
     private javax.swing.JButton bt_deslogar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
