@@ -4,15 +4,19 @@ package Apresentacao;
 import Dominio.ModuloPessoa.Administrador;
 import Dominio.ModuloPessoa.Cliente;
 import Dominio.ModuloPessoa.Pessoa;
+import Dominio.ModuloSupermercado.Produto;
 import java.awt.BorderLayout;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 public class TelaLogin extends javax.swing.JPanel {
 
-    public TelaLogin() {
+    public TelaLogin(ArrayList<Produto> listProdutos) {
         initComponents();
+        
+        listProdutos = new ArrayList();
         
         panel_login_adm.setVisible(false);
         bt_entrar.setEnabled(false);
@@ -158,39 +162,29 @@ public class TelaLogin extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
    
-    public Pessoa obterTipoPessoa(){
-        
-        if(rb_adm.isSelected())
-        {
-            String nome_adm = tf_nome.getText();
-            String cpf_adm = tf_cpf.getText();
+    public Pessoa obterAdministrador(){
+        String nome_adm = tf_nome.getText();
+        String cpf_adm = tf_cpf.getText();
+            
+        Pessoa administrador = new Administrador(nome_adm, cpf_adm);
+        return administrador;
+    }
+    
+    public Pessoa obterCliente(){
+        String nome_cliente = tf_nome.getText();
+        String cpf_cliente = tf_cpf.getText();
 
-            Pessoa administrador = new Administrador(nome_adm, cpf_adm);
-            return administrador;
-        }
-        else
-        {
-            if(rb_cliente.isSelected())
-            {
-                String nome_cliente = tf_nome.getText();
-                String cpf_cliente = tf_cpf.getText();
-
-                Pessoa cliente = new Cliente(nome_cliente, cpf_cliente);
-                return cliente;
-            }
-        }
-        return null;
+        Pessoa cliente = new Cliente(nome_cliente, cpf_cliente);
+        return cliente;
     }
     
     private void rb_admItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rb_admItemStateChanged
-        
         panel_login_adm.setVisible(true);
         tf_login_adm.setText(tf_nome.getText().toUpperCase());
         bt_entrar.setEnabled(true);
     }//GEN-LAST:event_rb_admItemStateChanged
 
     private void rb_clienteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rb_clienteItemStateChanged
-        
         panel_login_adm.setVisible(false);
         bt_entrar.setEnabled(true);
     }//GEN-LAST:event_rb_clienteItemStateChanged
@@ -199,14 +193,14 @@ public class TelaLogin extends javax.swing.JPanel {
         
         if(rb_adm.isSelected()== true)
         {
-            obterTipoPessoa();
+            obterAdministrador();
             validadorAdministrador();
         }
         else
         {
             if (rb_cliente.isSelected() == true)
             {
-                obterTipoPessoa();
+                obterCliente();
                 validadorCliente();
             }
         }
@@ -216,9 +210,9 @@ public class TelaLogin extends javax.swing.JPanel {
             
         try
         {
-            if(!tf_nome.getText().isEmpty() && !tf_cpf.getText().isEmpty() && !tf_login_adm.getText().isEmpty() && !tf_senha_adm.getPassword().equals(""))
+            if(!tf_nome.getText().isEmpty() && !tf_cpf.getText().isEmpty() && !tf_login_adm.getText().isEmpty() && !tf_senha_adm.getText().isEmpty())
             {
-                TelaPrincipalForm.telaControleProdutos = new TelaControleProdutos(obterTipoPessoa());  
+                TelaPrincipalForm.telaControleProdutos = new TelaControleProdutos(TelaPrincipalForm.listProdutos, obterAdministrador());  
                 JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);
                 janela.getContentPane().remove(TelaPrincipalForm.telaLogin);
                 janela.add(TelaPrincipalForm.telaControleProdutos, BorderLayout.CENTER); 
@@ -241,7 +235,7 @@ public class TelaLogin extends javax.swing.JPanel {
         {
             if(!tf_nome.getText().isEmpty() && !tf_cpf.getText().isEmpty())
             {
-                TelaPrincipalForm.telaCompraProdutos = new TelaCompraProdutos(obterTipoPessoa());  
+                TelaPrincipalForm.telaCompraProdutos = new TelaCompraProdutos(TelaPrincipalForm.listProdutos, obterCliente());  
                 JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);
                 janela.getContentPane().remove(TelaPrincipalForm.telaLogin);
                 janela.add(TelaPrincipalForm.telaCompraProdutos, BorderLayout.CENTER); 

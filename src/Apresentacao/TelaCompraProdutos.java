@@ -12,28 +12,28 @@ import javax.swing.table.DefaultTableModel;
 
 public class TelaCompraProdutos extends javax.swing.JPanel {
 
-    ArrayList<Produto> listProdutos;
     DefaultTableModel model;
     
     Pessoa cliente;
     
-    public TelaCompraProdutos(Pessoa cliente) {
+    public TelaCompraProdutos(ArrayList<Produto> listProdutos, Pessoa cliente) {
         initComponents();
+        
+        listProdutos = new ArrayList();
         
         this.cliente = cliente;
         lb_nomeCliente.setText(this.cliente.getNome());
         
         listProdutos = new ArrayList();
-        
     }
     
     public void carregarTabela(){
         
         ((DefaultTableModel) tb_produtos.getModel()).setRowCount(0);
         
-        for(int i = 0; i < listProdutos.size(); i++)
+        for(int i = 0; i < TelaPrincipalForm.listProdutos.size(); i++)
         { 
-           this.model.insertRow(i, new Object[]{listProdutos.get(i).getNome(), listProdutos.get(i).getPreco()});
+           this.model.insertRow(i, new Object[]{TelaPrincipalForm.listProdutos.get(i).getNome(), TelaPrincipalForm.listProdutos.get(i).getPreco()});
         }
         this.tb_produtos.setModel(model);
     }
@@ -70,66 +70,6 @@ public class TelaCompraProdutos extends javax.swing.JPanel {
 
         tb_produtos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
                 {null, null},
                 {null, null},
                 {null, null},
@@ -208,7 +148,7 @@ public class TelaCompraProdutos extends javax.swing.JPanel {
         switch(JOptionPane.showConfirmDialog(null, "Você têm certeza disso?", "Deslogar ", JOptionPane.YES_NO_OPTION))
         {
             case 0 :
-            TelaPrincipalForm.telaLogin = new TelaLogin();
+            TelaPrincipalForm.telaLogin = new TelaLogin(TelaPrincipalForm.listProdutos);
             JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);
             janela.getContentPane().remove(TelaPrincipalForm.telaCompraProdutos);
             janela.add(TelaPrincipalForm.telaLogin, BorderLayout.CENTER);

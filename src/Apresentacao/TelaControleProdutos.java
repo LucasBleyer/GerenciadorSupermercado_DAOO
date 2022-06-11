@@ -11,21 +11,20 @@ import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 public class TelaControleProdutos extends javax.swing.JPanel {
-  
-    ArrayList<Produto> listProdutos;
+
     DefaultTableModel model;
     
     String selecionado = null;
-    
     Pessoa administrador;
-    
-    public TelaControleProdutos(Pessoa admin) {
+
+    public TelaControleProdutos(ArrayList<Produto> listProdutos, Pessoa obterTipoPessoa) {
+        
         initComponents();
 
         listProdutos = new ArrayList();
         
-        administrador = admin;
-        lb_nomeAdministrador.setText(administrador.getNome());//lb_nomeAdministrador não aparece na segunda por que está chamando o construtor de baixo
+        administrador = obterTipoPessoa;
+        lb_nomeAdministrador.setText(administrador.getNome());
         
         this.model = (DefaultTableModel)this.tb_produtos.getModel();
         carregarTabela();
@@ -34,9 +33,10 @@ public class TelaControleProdutos extends javax.swing.JPanel {
     }
 
     public TelaControleProdutos(ArrayList<Produto> listProdutos) {
-        initComponents();
         
-        this.listProdutos = listProdutos;
+        initComponents();
+
+        listProdutos = new ArrayList();
         
         this.model = (DefaultTableModel)this.tb_produtos.getModel();
         carregarTabela();
@@ -48,16 +48,16 @@ public class TelaControleProdutos extends javax.swing.JPanel {
         
         ((DefaultTableModel) tb_produtos.getModel()).setRowCount(0);
         
-        for(int i = 0; i < listProdutos.size(); i++)
+        for(int i = 0; i < TelaPrincipalForm.listProdutos.size(); i++)
         { 
-           this.model.insertRow(i, new Object[]{listProdutos.get(i).getNome(), listProdutos.get(i).getPreco()});
+           this.model.insertRow(i, new Object[]{TelaPrincipalForm.listProdutos.get(i).getNome(), TelaPrincipalForm.listProdutos.get(i).getPreco()});
         }
         this.tb_produtos.setModel(model);
     }
     
     public void validadorBotoesListaVazia(){
         
-        if(listProdutos.isEmpty())
+        if(TelaPrincipalForm.listProdutos.isEmpty())
         {
             bt_excluir.setEnabled(false);
             bt_editar.setEnabled(false);
@@ -213,7 +213,7 @@ public class TelaControleProdutos extends javax.swing.JPanel {
 
     private void bt_cadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_cadastrarMouseClicked
 
-        TelaPrincipalForm.telaCadastroProdutos = new TelaCadastroProdutos(listProdutos);  
+        TelaPrincipalForm.telaCadastroProdutos = new TelaCadastroProdutos(TelaPrincipalForm.listProdutos);  
         JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);
         janela.getContentPane().remove(TelaPrincipalForm.telaControleProdutos);
         janela.add(TelaPrincipalForm.telaCadastroProdutos, BorderLayout.CENTER); 
@@ -223,7 +223,7 @@ public class TelaControleProdutos extends javax.swing.JPanel {
 
     private void bt_editarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_editarMouseClicked
         
-        TelaPrincipalForm.telaEdicaoProdutos = new TelaEdicaoProdutos(listProdutos);  
+        TelaPrincipalForm.telaEdicaoProdutos = new TelaEdicaoProdutos(TelaPrincipalForm.listProdutos);  
         JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);
         janela.getContentPane().remove(TelaPrincipalForm.telaControleProdutos);
         janela.add(TelaPrincipalForm.telaEdicaoProdutos, BorderLayout.CENTER); 
@@ -246,12 +246,12 @@ public class TelaControleProdutos extends javax.swing.JPanel {
                         if(temp != null)
                         {
                             this.selecionado = temp.toString();
-                            for(int i = 0; i < listProdutos.size(); i++)
+                            for(int i = 0; i < TelaPrincipalForm.listProdutos.size(); i++)
                             {  
-                                if(this.selecionado.equals(listProdutos.get(i).getNome()))
+                                if(this.selecionado.equals(TelaPrincipalForm.listProdutos.get(i).getNome()))
                                 {  
                                     this.model.removeRow(i);
-                                    produto = (Produto) listProdutos.remove(i);
+                                    produto = (Produto) TelaPrincipalForm.listProdutos.remove(i);
                                 }
                             }
                         }
@@ -273,7 +273,7 @@ public class TelaControleProdutos extends javax.swing.JPanel {
         switch(JOptionPane.showConfirmDialog(null, "Você têm certeza disso?", "Deslogar ", JOptionPane.YES_NO_OPTION))
         {
            case 0 :
-                    TelaPrincipalForm.telaLogin = new TelaLogin();
+                    TelaPrincipalForm.telaLogin = new TelaLogin(TelaPrincipalForm.listProdutos);
                     JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);  
                     janela.getContentPane().remove(TelaPrincipalForm.telaControleProdutos); 
                     janela.add(TelaPrincipalForm.telaLogin, BorderLayout.CENTER);   
