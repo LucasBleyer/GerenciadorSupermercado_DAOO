@@ -37,7 +37,7 @@ public class TelaLogin extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         tf_login_adm = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        tf_senha_adm = new javax.swing.JTextField();
+        tf_senha_adm = new javax.swing.JPasswordField();
         bt_entrar = new javax.swing.JButton();
 
         jLabel1.setText("Supermercado");
@@ -93,12 +93,12 @@ public class TelaLogin extends javax.swing.JPanel {
         panel_login_adm.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setText("Login:");
-        panel_login_adm.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 9, -1, -1));
+        panel_login_adm.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
         panel_login_adm.add(tf_login_adm, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 6, 252, -1));
 
         jLabel7.setText("Senha:");
-        panel_login_adm.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 49, -1, -1));
-        panel_login_adm.add(tf_senha_adm, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 46, 252, -1));
+        panel_login_adm.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, -1));
+        panel_login_adm.add(tf_senha_adm, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 250, -1));
 
         bt_entrar.setText("Entrar");
         bt_entrar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -179,6 +179,7 @@ public class TelaLogin extends javax.swing.JPanel {
     private void rb_admItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rb_admItemStateChanged
         
         panel_login_adm.setVisible(true);
+        tf_login_adm.setText(tf_nome.getText().toUpperCase());
         bt_entrar.setEnabled(true);
     }//GEN-LAST:event_rb_admItemStateChanged
 
@@ -211,7 +212,7 @@ public class TelaLogin extends javax.swing.JPanel {
         {
             if(!tf_nome.getText().isEmpty() && !tf_cpf.getText().isEmpty() && !tf_login_adm.getText().isEmpty() && !tf_senha_adm.getText().isEmpty())
             {
-                TelaPrincipalForm.telaControleProdutos = new TelaControleProdutos((Administrador)obterAdministrador());  
+                TelaPrincipalForm.telaControleProdutos = new TelaControleProdutos(tf_nome.getText());  
                 JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);
                 janela.getContentPane().remove(TelaPrincipalForm.telaLogin);
                 janela.add(TelaPrincipalForm.telaControleProdutos, BorderLayout.CENTER); 
@@ -268,6 +269,6 @@ public class TelaLogin extends javax.swing.JPanel {
     private javax.swing.JTextField tf_cpf;
     private javax.swing.JTextField tf_login_adm;
     private javax.swing.JTextField tf_nome;
-    private javax.swing.JTextField tf_senha_adm;
+    private javax.swing.JPasswordField tf_senha_adm;
     // End of variables declaration//GEN-END:variables
 }

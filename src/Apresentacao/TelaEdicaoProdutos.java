@@ -1,6 +1,7 @@
 
 package Apresentacao;
 
+import Apresentacao.TelaPrincipalForm;
 import Dominio.ModuloSupermercado.Produto;
 import java.awt.BorderLayout;
 import java.util.ArrayList;

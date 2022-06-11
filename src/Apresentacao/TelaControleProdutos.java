@@ -1,7 +1,6 @@
 
 package Apresentacao;
 
-import Dominio.ModuloPessoa.Administrador;
 import Dominio.ModuloSupermercado.Produto;
 import java.awt.BorderLayout;
 import java.util.ArrayList;
@@ -17,9 +16,10 @@ public class TelaControleProdutos extends javax.swing.JPanel {
     
     String selecionado = null;
     
-    public TelaControleProdutos(Administrador adm) {
+    public TelaControleProdutos(String nomeAdm) {
         initComponents();
-        lb_nomeAdministrador.setText(adm.getNome());
+        
+        lb_nomeAdministrador.setText(nomeAdm);
         
         listProdutos = new ArrayList();
         

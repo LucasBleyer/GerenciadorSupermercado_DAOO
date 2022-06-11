@@ -1,6 +1,7 @@
 
 package Apresentacao;
 
+import Apresentacao.TelaPrincipalForm;
 import Dominio.ModuloSupermercado.Produto;
 import java.awt.BorderLayout;
 import java.util.ArrayList;
@@ -130,7 +131,7 @@ public class TelaCadastroProdutos extends javax.swing.JPanel {
                 java.lang.String.class, java.lang.Double.class
             };
             boolean[] canEdit = new boolean [] {
-                true, false
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
