@@ -68,7 +68,7 @@ public class TelaCompraProdutos extends javax.swing.JPanel {
         tb_carrinho = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         bt_removerCarrinho = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        bt_finalizarCompra = new javax.swing.JButton();
 
         jLabel1.setText("Selecione os Produtos que deseja adicionar ao Carrinho de Compras");
 
@@ -178,7 +178,12 @@ public class TelaCompraProdutos extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setText("Finalizar Compra");
+        bt_finalizarCompra.setText("Finalizar Compra");
+        bt_finalizarCompra.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_finalizarCompraMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -205,7 +210,7 @@ public class TelaCompraProdutos extends javax.swing.JPanel {
                         .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(bt_removerCarrinho, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(bt_finalizarCompra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(22, 22, 22))
             .addGroup(layout.createSequentialGroup()
                 .addGap(58, 58, 58)
@@ -234,7 +239,7 @@ public class TelaCompraProdutos extends javax.swing.JPanel {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(bt_removerCarrinho, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(31, 31, 31)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(bt_finalizarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addGap(27, 27, 27)
                                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -316,7 +321,7 @@ public class TelaCompraProdutos extends javax.swing.JPanel {
             if(p != null)
             {
                TelaPrincipalForm.listCarrinho.add(p);
-               JOptionPane.showMessageDialog(null, "Produto adicionado ao carrinho!", "Erro!", JOptionPane.INFORMATION_MESSAGE);
+               JOptionPane.showMessageDialog(null, "Produto adicionado ao carrinho!", "Carrinho!", JOptionPane.INFORMATION_MESSAGE);
                this.modelCarrinho = (DefaultTableModel)this.tb_carrinho.getModel();
                carregarTabelaCarrinho();
             }
@@ -328,13 +333,13 @@ public class TelaCompraProdutos extends javax.swing.JPanel {
         }
         catch(Exception e)
         {
-            JOptionPane.showMessageDialog(null, "Selecione algum produto da tabela antes de continuar!", "Erro!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Selecione algum produto da tabela antes de continuar!", "Produtos à Venda!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_bt_adicionarCarrinhoMouseClicked
 
     private void bt_removerCarrinhoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_removerCarrinhoMouseClicked
         
-        switch(JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover o produto do carrinho", "Exclusão de produtos", JOptionPane.YES_NO_OPTION))
+        switch(JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover o produto do carrinho", "Carrinho", JOptionPane.YES_NO_OPTION))
         {
             case 0: 
                     Object temp;
@@ -371,12 +376,21 @@ public class TelaCompraProdutos extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_bt_removerCarrinhoMouseClicked
 
+    private void bt_finalizarCompraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_finalizarCompraMouseClicked
+        
+        TelaPrincipalForm.telaNotaFiscal = new TelaNotaFiscal();
+        JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);
+        janela.getContentPane().remove(TelaPrincipalForm.telaCompraProdutos);
+        janela.add(TelaPrincipalForm.telaNotaFiscal, BorderLayout.CENTER);
+        janela.pack();
+    }//GEN-LAST:event_bt_finalizarCompraMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_adicionarCarrinho;
     private javax.swing.JButton bt_deslogar;
+    private javax.swing.JButton bt_finalizarCompra;
     private javax.swing.JButton bt_removerCarrinho;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
