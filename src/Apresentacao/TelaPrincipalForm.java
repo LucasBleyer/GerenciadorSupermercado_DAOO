@@ -16,6 +16,8 @@ public class TelaPrincipalForm extends javax.swing.JFrame {
     static TelaCadastroProdutos telaCadastroProdutos;
     static TelaEdicaoProdutos telaEdicaoProdutos;
     
+    static ArrayList<Produto> listCarrinho;
+    
     static TelaCompraProdutos telaCompraProdutos;
     
     public TelaPrincipalForm() {
