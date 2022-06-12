@@ -90,26 +90,7 @@ public class TelaCompraProdutos extends javax.swing.JPanel {
 
         tb_produtos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Nome", "Preço"
@@ -150,10 +131,7 @@ public class TelaCompraProdutos extends javax.swing.JPanel {
 
         tb_carrinho.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+
             },
             new String [] {
                 "Nome"
@@ -237,9 +215,10 @@ public class TelaCompraProdutos extends javax.swing.JPanel {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(bt_removerCarrinho, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(31, 31, 31)
-                                    .addComponent(bt_finalizarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(bt_removerCarrinho, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(bt_finalizarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(13, 13, 13))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addGap(27, 27, 27)
                                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -316,6 +295,9 @@ public class TelaCompraProdutos extends javax.swing.JPanel {
                 if(selecionado.equals(TelaPrincipalForm.listProdutos.get(i).getNome()))
                 { 
                     p = (Produto) TelaPrincipalForm.listProdutos.get(i);
+                    
+                    contTotalPagar += TelaPrincipalForm.listProdutos.get(i).getPreco();
+                    lb_totalPagar.setText("R$" + contTotalPagar);   
                 }
             }
             if(p != null)
@@ -361,8 +343,11 @@ public class TelaCompraProdutos extends javax.swing.JPanel {
                                     
                                     this.modelCarrinho = (DefaultTableModel)this.tb_carrinho.getModel();
                                     carregarTabelaCarrinho();
+                                    
+                                    contTotalPagar -= TelaPrincipalForm.listCarrinho.get(i).getPreco();
+                                    lb_totalPagar.setText("R$ " + contTotalPagar);
                                 }
-                            }
+                            }    
                         }
                     }
                     catch(Exception e)
@@ -378,7 +363,7 @@ public class TelaCompraProdutos extends javax.swing.JPanel {
 
     private void bt_finalizarCompraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_finalizarCompraMouseClicked
         
-        TelaPrincipalForm.telaNotaFiscal = new TelaNotaFiscal();
+        TelaPrincipalForm.telaNotaFiscal = new TelaNotaFiscal(TelaPrincipalForm.listCarrinho, contTotalPagar);
         JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);
         janela.getContentPane().remove(TelaPrincipalForm.telaCompraProdutos);
         janela.add(TelaPrincipalForm.telaNotaFiscal, BorderLayout.CENTER);
