@@ -2,6 +2,7 @@
 package Apresentacao;
 
 import Dominio.ModuloSupermercado.Produto;
+import Dominio.ModuloSupermercado.Supermercado;
 import java.awt.BorderLayout;
 import java.util.ArrayList;
 import javax.swing.JFrame;
@@ -12,10 +13,16 @@ public class TelaNotaFiscal extends javax.swing.JPanel {
 
     DefaultTableModel modelCarrinho;
     
+    Supermercado supermercado;
+    
     public TelaNotaFiscal(ArrayList<Produto> listCarrinho, double contTotalPagar) {
         initComponents();
         
         tb_carrinho.setEnabled(false);
+        
+        //lb_nomeCliente.setText(supermercado.getCliente().getNome());
+        
+        //lb_cpfCliente.setText(supermercado.getCliente().getCpf());
         
         lb_totalPagar.setText("R$ " +contTotalPagar);
         
@@ -49,7 +56,7 @@ public class TelaNotaFiscal extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         lb_nomeCliente = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lb_cpfCliente = new javax.swing.JLabel();
         lb_totalPagar = new javax.swing.JLabel();
 
         jLabel1.setText("Supermercado do Dev");
@@ -100,7 +107,7 @@ public class TelaNotaFiscal extends javax.swing.JPanel {
 
         lb_nomeCliente.setText("<nomeCliente>");
 
-        jLabel6.setText("<cpfCliente>");
+        lb_cpfCliente.setText("<cpfCliente>");
 
         lb_totalPagar.setText("<totalPagar>");
 
@@ -126,7 +133,7 @@ public class TelaNotaFiscal extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel6))
+                        .addComponent(lb_cpfCliente))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -147,7 +154,7 @@ public class TelaNotaFiscal extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel6))
+                    .addComponent(lb_cpfCliente))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
@@ -179,8 +186,8 @@ public class TelaNotaFiscal extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lb_cpfCliente;
     private javax.swing.JLabel lb_nomeCliente;
     private javax.swing.JLabel lb_totalPagar;
     private javax.swing.JTable tb_carrinho;

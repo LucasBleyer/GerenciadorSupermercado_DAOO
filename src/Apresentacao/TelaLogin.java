@@ -5,6 +5,7 @@ import Dominio.ModuloPessoa.Administrador;
 import Dominio.ModuloPessoa.Cliente;
 import Dominio.ModuloPessoa.Pessoa;
 import Dominio.ModuloSupermercado.Produto;
+import Dominio.ModuloSupermercado.Supermercado;
 import java.awt.BorderLayout;
 import java.util.ArrayList;
 import javax.swing.JFrame;
@@ -12,9 +13,13 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 public class TelaLogin extends javax.swing.JPanel {
+    
+    Supermercado supermercado;
 
     public TelaLogin(ArrayList<Produto> listProdutos) {
         initComponents();
+        
+        supermercado = new Supermercado();
         
         listProdutos = new ArrayList();
         
@@ -167,6 +172,8 @@ public class TelaLogin extends javax.swing.JPanel {
         String cpf_adm = tf_cpf.getText();
             
         Pessoa administrador = new Administrador(nome_adm, cpf_adm);
+        supermercado.setAdministrador((Administrador) administrador);
+        
         return administrador;
     }
     
@@ -175,6 +182,8 @@ public class TelaLogin extends javax.swing.JPanel {
         String cpf_cliente = tf_cpf.getText();
 
         Pessoa cliente = new Cliente(nome_cliente, cpf_cliente);
+        supermercado.setCliente((Cliente) cliente);
+        
         return cliente;
     }
     
@@ -208,25 +217,25 @@ public class TelaLogin extends javax.swing.JPanel {
 
     public void validadorAdministrador(){
             
-        try
-        {
+//        try
+//        {
             if(!tf_nome.getText().isEmpty() && !tf_cpf.getText().isEmpty() && !tf_login_adm.getText().isEmpty() && !tf_senha_adm.getText().isEmpty())
             {
-                TelaPrincipalForm.telaControleProdutos = new TelaControleProdutos(TelaPrincipalForm.listProdutos, obterAdministrador());  
+                TelaPrincipalForm.telaControleProdutos = new TelaControleProdutos(TelaPrincipalForm.listProdutos);  
                 JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);
                 janela.getContentPane().remove(TelaPrincipalForm.telaLogin);
                 janela.add(TelaPrincipalForm.telaControleProdutos, BorderLayout.CENTER); 
                 janela.pack();
             }
-            else
-            {
-                throw new Exception();
-            }
-        }
-        catch(Exception e)
-        {
-            JOptionPane.showMessageDialog(null, "É necessário completar o cadastro e fazer o login para acessar o sistema como Administrador", "Erro!", JOptionPane.ERROR_MESSAGE);
-        }
+//            else
+//            {
+//                throw new Exception();
+//            }
+//        }
+//        catch(Exception e)
+//        {
+//            JOptionPane.showMessageDialog(null, "É necessário completar o cadastro e fazer o login para acessar o sistema como Administrador", "Erro!", JOptionPane.ERROR_MESSAGE);
+//        }
     }
     
     public void validadorCliente(){

@@ -2,6 +2,7 @@
 package Apresentacao;
 
 import Dominio.ModuloSupermercado.Produto;
+import Dominio.ModuloSupermercado.Supermercado;
 import java.awt.BorderLayout;
 import java.util.ArrayList;
 

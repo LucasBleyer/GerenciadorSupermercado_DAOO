@@ -1,8 +1,8 @@
 
 package Apresentacao;
 
-import Dominio.ModuloPessoa.Pessoa;
 import Dominio.ModuloSupermercado.Produto;
+import Dominio.ModuloSupermercado.Supermercado;
 import java.awt.BorderLayout;
 import java.util.ArrayList;
 import javax.swing.JFrame;
@@ -15,28 +15,16 @@ public class TelaControleProdutos extends javax.swing.JPanel {
     DefaultTableModel model;
     
     String selecionado = null;
-    Pessoa administrador;
-
-    public TelaControleProdutos(ArrayList<Produto> listProdutos, Pessoa obterTipoPessoa) {
-        
-        initComponents();
-
-        listProdutos = new ArrayList();
-        
-        administrador = obterTipoPessoa;
-        lb_nomeAdministrador.setText(administrador.getNome());
-        
-        this.model = (DefaultTableModel)this.tb_produtos.getModel();
-        carregarTabela();
-        
-        validadorBotoesListaVazia();
-    }
+    
+    Supermercado supermercado;
 
     public TelaControleProdutos(ArrayList<Produto> listProdutos) {
         
         initComponents();
 
         listProdutos = new ArrayList();
+        
+        //lb_nomeAdministrador.setText(supermercado.getAdministrador().getNome());
         
         this.model = (DefaultTableModel)this.tb_produtos.getModel();
         carregarTabela();
