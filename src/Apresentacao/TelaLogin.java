@@ -13,13 +13,9 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 public class TelaLogin extends javax.swing.JPanel {
-    
-    Supermercado supermercado;
 
     public TelaLogin(ArrayList<Produto> listProdutos) {
         initComponents();
-        
-        supermercado = new Supermercado();
         
         listProdutos = new ArrayList();
         
@@ -172,7 +168,6 @@ public class TelaLogin extends javax.swing.JPanel {
         String cpf_adm = tf_cpf.getText();
             
         Pessoa administrador = new Administrador(nome_adm, cpf_adm);
-        supermercado.setAdministrador((Administrador) administrador);
         
         return administrador;
     }
@@ -182,7 +177,6 @@ public class TelaLogin extends javax.swing.JPanel {
         String cpf_cliente = tf_cpf.getText();
 
         Pessoa cliente = new Cliente(nome_cliente, cpf_cliente);
-        supermercado.setCliente((Cliente) cliente);
         
         return cliente;
     }

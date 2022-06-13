@@ -1,27 +1,17 @@
 
 package Dominio.ModuloSupermercado;
 
-import Dominio.ModuloPessoa.Administrador;
-import Dominio.ModuloPessoa.Cliente;
+import Dominio.ModuloPessoa.Pessoa;
 
-public class Supermercado {
+public class Supermercado{
     
-    private Cliente cliente;
-    private Administrador administrador;
+    private Pessoa pessoa;
 
-    public Cliente getCliente() {
-        return cliente;
+    public Pessoa getPessoa() {
+        return pessoa;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public Administrador getAdministrador() {
-        return administrador;
-    }
-
-    public void setAdministrador(Administrador administrador) {
-        this.administrador = administrador;
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 }

@@ -3,7 +3,6 @@ package Apresentacao;
 
 import Dominio.ModuloPessoa.Pessoa;
 import Dominio.ModuloSupermercado.Produto;
-import Dominio.ModuloSupermercado.Supermercado;
 import java.awt.BorderLayout;
 import java.util.ArrayList;
 import javax.swing.JFrame;
@@ -15,15 +14,13 @@ public class TelaCompraProdutos extends javax.swing.JPanel {
 
     DefaultTableModel modelProdutos, modelCarrinho;
     String selecionado = null;
-    
-    Supermercado supermercado;
 
     double contTotalPagar = 0;
     
     public TelaCompraProdutos(ArrayList<Produto> listProdutos, Pessoa cliente) {
         initComponents();
         
-        //lb_nomeCliente.setText(supermercado.getCliente().getNome());
+        //lb_nomeCliente.setText(.getNome());
         
         listProdutos = new ArrayList();
         

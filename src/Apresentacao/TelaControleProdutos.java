@@ -2,7 +2,6 @@
 package Apresentacao;
 
 import Dominio.ModuloSupermercado.Produto;
-import Dominio.ModuloSupermercado.Supermercado;
 import java.awt.BorderLayout;
 import java.util.ArrayList;
 import javax.swing.JFrame;
@@ -15,8 +14,6 @@ public class TelaControleProdutos extends javax.swing.JPanel {
     DefaultTableModel model;
     
     String selecionado = null;
-    
-    Supermercado supermercado;
 
     public TelaControleProdutos(ArrayList<Produto> listProdutos) {
         
@@ -24,7 +21,7 @@ public class TelaControleProdutos extends javax.swing.JPanel {
 
         listProdutos = new ArrayList();
         
-        //lb_nomeAdministrador.setText(supermercado.getAdministrador().getNome());
+        //lb_nomeAdministrador.setText(.getNome());
         
         this.model = (DefaultTableModel)this.tb_produtos.getModel();
         carregarTabela();

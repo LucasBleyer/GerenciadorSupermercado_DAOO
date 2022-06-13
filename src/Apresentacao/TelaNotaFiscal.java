@@ -2,7 +2,6 @@
 package Apresentacao;
 
 import Dominio.ModuloSupermercado.Produto;
-import Dominio.ModuloSupermercado.Supermercado;
 import java.awt.BorderLayout;
 import java.util.ArrayList;
 import javax.swing.JFrame;
@@ -13,16 +12,14 @@ public class TelaNotaFiscal extends javax.swing.JPanel {
 
     DefaultTableModel modelCarrinho;
     
-    Supermercado supermercado;
-    
     public TelaNotaFiscal(ArrayList<Produto> listCarrinho, double contTotalPagar) {
         initComponents();
         
         tb_carrinho.setEnabled(false);
         
-        //lb_nomeCliente.setText(supermercado.getCliente().getNome());
+        //lb_nomeCliente.setText(.getNome());
         
-        //lb_cpfCliente.setText(supermercado.getCliente().getCpf());
+        //lb_cpfCliente.setText(.getCpf());
         
         lb_totalPagar.setText("R$ " +contTotalPagar);
         
