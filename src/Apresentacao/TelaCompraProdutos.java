@@ -20,7 +20,11 @@ public class TelaCompraProdutos extends javax.swing.JPanel {
     public TelaCompraProdutos(ArrayList<Produto> listProdutos, Pessoa cliente) {
         initComponents();
         
-        //lb_nomeCliente.setText(.getNome());
+        for (int i = 0; i < TelaPrincipalForm.listPessoas.size(); i++)
+        {
+            String nome = TelaPrincipalForm.listPessoas.get(i).getNome();
+            lb_nomeCliente.setText(nome);
+        } 
         
         listProdutos = new ArrayList();
         

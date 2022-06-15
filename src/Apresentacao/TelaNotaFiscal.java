@@ -17,9 +17,12 @@ public class TelaNotaFiscal extends javax.swing.JPanel {
         
         tb_carrinho.setEnabled(false);
         
-        //lb_nomeCliente.setText(.getNome());
-        
-        //lb_cpfCliente.setText(.getCpf());
+        for (int i = 0; i < TelaPrincipalForm.listPessoas.size(); i++)
+        {
+            lb_nomeCliente.setText(TelaPrincipalForm.listPessoas.get(i).getNome());
+            
+            lb_cpfCliente.setText(TelaPrincipalForm.listPessoas.get(i).getCpf());
+        } 
         
         lb_totalPagar.setText("R$ " +contTotalPagar);
         

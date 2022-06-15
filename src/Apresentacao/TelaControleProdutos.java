@@ -1,6 +1,7 @@
 
 package Apresentacao;
 
+import Dominio.ModuloPessoa.Administrador;
 import Dominio.ModuloSupermercado.Produto;
 import java.awt.BorderLayout;
 import java.util.ArrayList;
@@ -15,13 +16,17 @@ public class TelaControleProdutos extends javax.swing.JPanel {
     
     String selecionado = null;
 
-    public TelaControleProdutos(ArrayList<Produto> listProdutos) {
+    public TelaControleProdutos( ArrayList<Produto> listProdutos) {
         
         initComponents();
 
         listProdutos = new ArrayList();
         
-        //lb_nomeAdministrador.setText(.getNome());
+        for (int i = 0; i < TelaPrincipalForm.listPessoas.size(); i++)
+        {
+            String nome = TelaPrincipalForm.listPessoas.get(i).getNome();
+            lb_nomeAdministrador.setText(nome);
+        }  
         
         this.model = (DefaultTableModel)this.tb_produtos.getModel();
         carregarTabela();

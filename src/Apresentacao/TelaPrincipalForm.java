@@ -1,6 +1,7 @@
 
 package Apresentacao;
 
+import Dominio.ModuloPessoa.Pessoa;
 import Dominio.ModuloSupermercado.Produto;
 import java.awt.BorderLayout;
 import java.util.ArrayList;
@@ -9,6 +10,8 @@ public class TelaPrincipalForm extends javax.swing.JFrame {
     
     static TelaAcessoSistema telaAcessoSistema;
     static TelaLogin telaLogin;
+    
+    static ArrayList<Pessoa> listPessoas;
     
     static ArrayList<Produto> listProdutos;
     

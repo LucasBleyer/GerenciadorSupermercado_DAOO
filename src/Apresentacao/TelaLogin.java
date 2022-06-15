@@ -5,7 +5,6 @@ import Dominio.ModuloPessoa.Administrador;
 import Dominio.ModuloPessoa.Cliente;
 import Dominio.ModuloPessoa.Pessoa;
 import Dominio.ModuloSupermercado.Produto;
-import Dominio.ModuloSupermercado.Supermercado;
 import java.awt.BorderLayout;
 import java.util.ArrayList;
 import javax.swing.JFrame;
@@ -19,6 +18,8 @@ public class TelaLogin extends javax.swing.JPanel {
         
         listProdutos = new ArrayList();
         
+        TelaPrincipalForm.listPessoas = new ArrayList();
+        
         panel_login_adm.setVisible(false);
         bt_entrar.setEnabled(false);
     }
@@ -28,6 +29,7 @@ public class TelaLogin extends javax.swing.JPanel {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        jMenu1 = new javax.swing.JMenu();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -44,6 +46,8 @@ public class TelaLogin extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         tf_senha_adm = new javax.swing.JPasswordField();
         bt_entrar = new javax.swing.JButton();
+
+        jMenu1.setText("jMenu1");
 
         jLabel1.setText("Supermercado");
 
@@ -99,7 +103,7 @@ public class TelaLogin extends javax.swing.JPanel {
 
         jLabel6.setText("Login:");
         panel_login_adm.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
-        panel_login_adm.add(tf_login_adm, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 6, 252, -1));
+        panel_login_adm.add(tf_login_adm, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 6, 250, -1));
 
         jLabel7.setText("Senha:");
         panel_login_adm.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, -1));
@@ -168,6 +172,7 @@ public class TelaLogin extends javax.swing.JPanel {
         String cpf_adm = tf_cpf.getText();
             
         Pessoa administrador = new Administrador(nome_adm, cpf_adm);
+        TelaPrincipalForm.listPessoas.add(administrador);
         
         return administrador;
     }
@@ -177,6 +182,7 @@ public class TelaLogin extends javax.swing.JPanel {
         String cpf_cliente = tf_cpf.getText();
 
         Pessoa cliente = new Cliente(nome_cliente, cpf_cliente);
+        TelaPrincipalForm.listPessoas.add(cliente);
         
         return cliente;
     }
@@ -265,6 +271,7 @@ public class TelaLogin extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel panel_login_adm;
     private javax.swing.JRadioButton rb_adm;
