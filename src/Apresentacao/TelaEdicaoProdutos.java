@@ -39,6 +39,8 @@ public class TelaEdicaoProdutos extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        bt_voltar1 = new javax.swing.JButton();
+        bt_voltar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -48,9 +50,26 @@ public class TelaEdicaoProdutos extends javax.swing.JPanel {
         bt_editar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tb_produtos = new javax.swing.JTable();
-        bt_voltar = new javax.swing.JButton();
         lb_produtoEditado = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        bt_voltar2 = new javax.swing.JButton();
+
+        bt_voltar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resource/logout_FILL0_wght400_GRAD0_opsz48 (1).png"))); // NOI18N
+        bt_voltar1.setText("Controle de Produtos");
+        bt_voltar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_voltar1MouseClicked(evt);
+            }
+        });
+
+        bt_voltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resource/logout_FILL0_wght400_GRAD0_opsz48 (1).png"))); // NOI18N
+        bt_voltar.setText("Controle de Produtos");
+        bt_voltar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_voltarMouseClicked(evt);
+            }
+        });
 
         jLabel1.setText("Produto selecionado:");
 
@@ -124,16 +143,19 @@ public class TelaEdicaoProdutos extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tb_produtos);
 
-        bt_voltar.setText("Voltar para Controle de Produtos");
-        bt_voltar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bt_voltarMouseClicked(evt);
-            }
-        });
-
         lb_produtoEditado.setText("<produtoEditado>");
 
         jLabel4.setText("Selecione um produto na Tabela para editá-lo");
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resource/edit_note_FILL0_wght400_GRAD0_opsz48.png"))); // NOI18N
+
+        bt_voltar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resource/logout_FILL0_wght400_GRAD0_opsz48 (1).png"))); // NOI18N
+        bt_voltar2.setText("Controle de Produtos");
+        bt_voltar2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_voltar2MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -153,25 +175,29 @@ public class TelaEdicaoProdutos extends javax.swing.JPanel {
                                     .addComponent(tf_nome)
                                     .addComponent(tf_preco, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(178, 178, 178)
-                                .addComponent(bt_voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(245, 245, 245)
-                                .addComponent(bt_editar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(164, 164, 164)
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lb_produtoEditado))))
+                                .addComponent(lb_produtoEditado))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(209, 209, 209)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(bt_editar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(237, 237, 237)
-                        .addComponent(jLabel4)))
+                        .addComponent(jLabel4))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(bt_voltar2)))
                 .addContainerGap(135, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(63, 63, 63)
+                .addContainerGap()
+                .addComponent(bt_voltar2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,9 +215,9 @@ public class TelaEdicaoProdutos extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(tf_preco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(62, 62, 62)
-                        .addComponent(bt_editar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(bt_voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(bt_editar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
@@ -254,15 +280,6 @@ public class TelaEdicaoProdutos extends javax.swing.JPanel {
         carregarTabela();
     }//GEN-LAST:event_bt_editarMouseClicked
 
-    private void bt_voltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_voltarMouseClicked
-
-        TelaPrincipalForm.telaControleProdutos = new TelaControleProdutos(Supermercado.listProdutos);
-        JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);
-        janela.getContentPane().removeAll();
-        janela.add(TelaPrincipalForm.telaControleProdutos, BorderLayout.CENTER);
-        janela.pack();
-    }//GEN-LAST:event_bt_voltarMouseClicked
-
     private void tb_produtosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_produtosMouseClicked
         
         Object temp;
@@ -294,14 +311,47 @@ public class TelaEdicaoProdutos extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_tb_produtosMouseClicked
 
+    private void bt_voltar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_voltar1MouseClicked
+
+        TelaPrincipalForm.telaControleProdutos = new TelaControleProdutos(Supermercado.listProdutos);
+        JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);
+        janela.getContentPane().removeAll();
+        janela.add(TelaPrincipalForm.telaControleProdutos, BorderLayout.CENTER);
+        janela.pack();
+
+    }//GEN-LAST:event_bt_voltar1MouseClicked
+
+    private void bt_voltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_voltarMouseClicked
+
+        TelaPrincipalForm.telaControleProdutos = new TelaControleProdutos(Supermercado.listProdutos);
+        JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);
+        janela.getContentPane().removeAll();
+        janela.add(TelaPrincipalForm.telaControleProdutos, BorderLayout.CENTER);
+        janela.pack();
+
+    }//GEN-LAST:event_bt_voltarMouseClicked
+
+    private void bt_voltar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_voltar2MouseClicked
+
+        TelaPrincipalForm.telaControleProdutos = new TelaControleProdutos(Supermercado.listProdutos);
+        JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);
+        janela.getContentPane().removeAll();
+        janela.add(TelaPrincipalForm.telaControleProdutos, BorderLayout.CENTER);
+        janela.pack();
+
+    }//GEN-LAST:event_bt_voltar2MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_editar;
     private javax.swing.JButton bt_voltar;
+    private javax.swing.JButton bt_voltar1;
+    private javax.swing.JButton bt_voltar2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lb_produtoEditado;
