@@ -2,6 +2,7 @@
 package Apresentacao;
 
 import Dominio.ModuloSupermercado.Produto;
+import Dominio.ModuloSupermercado.Supermercado;
 import java.awt.BorderLayout;
 import java.util.ArrayList;
 import javax.swing.JFrame;
@@ -13,10 +14,10 @@ public class TelaCadastroProdutos extends javax.swing.JPanel {
 
     DefaultTableModel model;
     
-    public TelaCadastroProdutos(ArrayList<Produto> listProdutos) {
+    public TelaCadastroProdutos() {
         initComponents();
 
-        listProdutos = new ArrayList();
+        Supermercado.listProdutos = new ArrayList();
         
         this.model = (DefaultTableModel)this.tb_produtos.getModel();
         carregarTabela();
@@ -26,9 +27,9 @@ public class TelaCadastroProdutos extends javax.swing.JPanel {
          
         ((DefaultTableModel) tb_produtos.getModel()).setRowCount(0);
          
-        for(int i = 0; i < TelaPrincipalForm.listProdutos.size(); i++)
+        for(int i = 0; i < Supermercado.listProdutos.size(); i++)
         { 
-           this.model.insertRow(i, new Object[]{TelaPrincipalForm.listProdutos.get(i).getNome(), TelaPrincipalForm.listProdutos.get(i).getPreco()});
+           this.model.insertRow(i, new Object[]{Supermercado.listProdutos.get(i).getNome(), Supermercado.listProdutos.get(i).getPreco()});
         }
         this.tb_produtos.setModel(model);
     }
@@ -195,7 +196,7 @@ public class TelaCadastroProdutos extends javax.swing.JPanel {
         {
            if (!tf_nome.getText().isEmpty() && !tf_preco.getText().isEmpty()) 
            {
-               TelaPrincipalForm.listProdutos.add(obterProduto());
+               Supermercado.listProdutos.add(obterProduto());
                limparCampos();
                carregarTabela();
            } 
@@ -212,7 +213,7 @@ public class TelaCadastroProdutos extends javax.swing.JPanel {
 
     private void bt_voltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_voltarMouseClicked
      
-        TelaPrincipalForm.telaControleProdutos = new TelaControleProdutos(TelaPrincipalForm.listProdutos);
+        TelaPrincipalForm.telaControleProdutos = new TelaControleProdutos(Supermercado.listProdutos);
         JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);   
         janela.getContentPane().removeAll(); 
         janela.add(TelaPrincipalForm.telaControleProdutos, BorderLayout.CENTER);

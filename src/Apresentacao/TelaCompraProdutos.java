@@ -1,8 +1,8 @@
 
 package Apresentacao;
 
-import Dominio.ModuloPessoa.Pessoa;
 import Dominio.ModuloSupermercado.Produto;
+import Dominio.ModuloSupermercado.Supermercado;
 import java.awt.BorderLayout;
 import java.util.ArrayList;
 import javax.swing.JFrame;
@@ -17,18 +17,18 @@ public class TelaCompraProdutos extends javax.swing.JPanel {
 
     double contTotalPagar = 0;
     
-    public TelaCompraProdutos(ArrayList<Produto> listProdutos, Pessoa cliente) {
+    public TelaCompraProdutos(ArrayList<Produto> listProdutos) {
         initComponents();
         
-        for (int i = 0; i < TelaPrincipalForm.listPessoas.size(); i++)
+        for (int i = 0; i < Supermercado.listPessoas.size(); i++)
         {
-            String nome = TelaPrincipalForm.listPessoas.get(i).getNome();
+            String nome = Supermercado.listPessoas.get(i).getNome();
             lb_nomeCliente.setText(nome);
         } 
         
         listProdutos = new ArrayList();
         
-        TelaPrincipalForm.listCarrinho = new ArrayList<Produto>();
+        Supermercado.listCarrinho = new ArrayList<Produto>();
         
         this.modelProdutos = (DefaultTableModel)this.tb_produtos.getModel();
         carregarTabelaProdutos();    
@@ -38,9 +38,9 @@ public class TelaCompraProdutos extends javax.swing.JPanel {
         
         ((DefaultTableModel) tb_produtos.getModel()).setRowCount(0);
         
-        for(int i = 0; i < TelaPrincipalForm.listProdutos.size(); i++)
+        for(int i = 0; i < Supermercado.listProdutos.size(); i++)
         { 
-           this.modelProdutos.insertRow(i, new Object[]{TelaPrincipalForm.listProdutos.get(i).getNome(), TelaPrincipalForm.listProdutos.get(i).getPreco()});
+           this.modelProdutos.insertRow(i, new Object[]{Supermercado.listProdutos.get(i).getNome(), Supermercado.listProdutos.get(i).getPreco()});
         }
         this.tb_produtos.setModel(modelProdutos);
     }
@@ -49,9 +49,9 @@ public class TelaCompraProdutos extends javax.swing.JPanel {
         
         ((DefaultTableModel) tb_carrinho.getModel()).setRowCount(0);
         
-        for(int i = 0; i < TelaPrincipalForm.listCarrinho.size(); i++)
+        for(int i = 0; i < Supermercado.listCarrinho.size(); i++)
         { 
-           this.modelCarrinho.insertRow(i, new Object[]{TelaPrincipalForm.listCarrinho.get(i).getNome()});
+           this.modelCarrinho.insertRow(i, new Object[]{Supermercado.listCarrinho.get(i).getNome()});
         }
         this.tb_carrinho.setModel(modelCarrinho);
     }
@@ -244,7 +244,7 @@ public class TelaCompraProdutos extends javax.swing.JPanel {
         switch(JOptionPane.showConfirmDialog(null, "Você têm certeza disso?", "Deslogar ", JOptionPane.YES_NO_OPTION))
         {
             case 0:
-            TelaPrincipalForm.telaLogin = new TelaLogin(TelaPrincipalForm.listProdutos);
+            TelaPrincipalForm.telaLogin = new TelaLogin(Supermercado.listProdutos);
             JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);
             janela.getContentPane().remove(TelaPrincipalForm.telaCompraProdutos);
             janela.add(TelaPrincipalForm.telaLogin, BorderLayout.CENTER);
@@ -269,11 +269,11 @@ public class TelaCompraProdutos extends javax.swing.JPanel {
             if(temp != null)
             {
                 this.selecionado = temp.toString();
-                for(int i = 0; i< TelaPrincipalForm.listProdutos.size(); i++)
+                for(int i = 0; i< Supermercado.listProdutos.size(); i++)
                 {  
-                    if(this.selecionado.equals(TelaPrincipalForm.listProdutos.get(i).getNome()))
+                    if(this.selecionado.equals(Supermercado.listProdutos.get(i).getNome()))
                     {  
-                        p = (Produto) TelaPrincipalForm.listProdutos.get(i);
+                        p = (Produto) Supermercado.listProdutos.get(i);
                     }
                 }
             }
@@ -296,19 +296,19 @@ public class TelaCompraProdutos extends javax.swing.JPanel {
            { 
             Produto p = null;
         
-            for(int i=0; i<TelaPrincipalForm.listProdutos.size(); i++)
+            for(int i=0; i<Supermercado.listProdutos.size(); i++)
             {  
-                if(selecionado.equals(TelaPrincipalForm.listProdutos.get(i).getNome()))
+                if(selecionado.equals(Supermercado.listProdutos.get(i).getNome()))
                 { 
-                    p = (Produto) TelaPrincipalForm.listProdutos.get(i);
+                    p = (Produto) Supermercado.listProdutos.get(i);
                     
-                    contTotalPagar += TelaPrincipalForm.listProdutos.get(i).getPreco();
+                    contTotalPagar += Supermercado.listProdutos.get(i).getPreco();
                     lb_totalPagar.setText("R$" + contTotalPagar);   
                 }
             }
             if(p != null)
             {
-               TelaPrincipalForm.listCarrinho.add(p);
+               Supermercado.listCarrinho.add(p);
                JOptionPane.showMessageDialog(null, "Produto adicionado ao carrinho!", "Carrinho!", JOptionPane.INFORMATION_MESSAGE);
                this.modelCarrinho = (DefaultTableModel)this.tb_carrinho.getModel();
                carregarTabelaCarrinho();
@@ -340,17 +340,17 @@ public class TelaCompraProdutos extends javax.swing.JPanel {
                         if(temp != null)
                         {
                             this.selecionado = temp.toString();
-                            for(int i = 0; i < TelaPrincipalForm.listCarrinho.size(); i++)
+                            for(int i = 0; i < Supermercado.listCarrinho.size(); i++)
                             {  
-                                if(this.selecionado.equals(TelaPrincipalForm.listCarrinho.get(i).getNome()))
+                                if(this.selecionado.equals(Supermercado.listCarrinho.get(i).getNome()))
                                 {  
                                     this.modelCarrinho.removeRow(i);
-                                    produto = (Produto) TelaPrincipalForm.listCarrinho.remove(i);
+                                    produto = (Produto) Supermercado.listCarrinho.remove(i);
                                     
                                     this.modelCarrinho = (DefaultTableModel)this.tb_carrinho.getModel();
                                     carregarTabelaCarrinho();
                                     
-                                    contTotalPagar -= TelaPrincipalForm.listCarrinho.get(i).getPreco();
+                                    contTotalPagar -= Supermercado.listCarrinho.get(i).getPreco();
                                     lb_totalPagar.setText("R$ " + contTotalPagar);
                                 }
                             }    
@@ -369,7 +369,7 @@ public class TelaCompraProdutos extends javax.swing.JPanel {
 
     private void bt_finalizarCompraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_finalizarCompraMouseClicked
         
-        TelaPrincipalForm.telaNotaFiscal = new TelaNotaFiscal(TelaPrincipalForm.listCarrinho, contTotalPagar);
+        TelaPrincipalForm.telaNotaFiscal = new TelaNotaFiscal(Supermercado.listCarrinho, contTotalPagar);
         JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);
         janela.getContentPane().remove(TelaPrincipalForm.telaCompraProdutos);
         janela.add(TelaPrincipalForm.telaNotaFiscal, BorderLayout.CENTER);

@@ -1,7 +1,7 @@
 
 package Apresentacao;
 
-import Dominio.ModuloSupermercado.Produto;
+import Dominio.ModuloSupermercado.Supermercado;
 import java.awt.BorderLayout;
 import java.util.ArrayList;
 import javax.swing.JFrame;
@@ -11,8 +11,10 @@ import javax.swing.SwingUtilities;
 
 public class TelaAcessoSistema extends javax.swing.JPanel {
 
-    public TelaAcessoSistema(ArrayList<Produto> listProdutos) {
+    public TelaAcessoSistema() {
         initComponents();
+        
+        Supermercado.listProdutos = new ArrayList();
     }
 
     @SuppressWarnings("unchecked")
@@ -80,7 +82,7 @@ public class TelaAcessoSistema extends javax.swing.JPanel {
 
     private void bt_acessarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_acessarMouseClicked
         
-        TelaPrincipalForm.telaLogin = new TelaLogin(TelaPrincipalForm.listProdutos);  
+        TelaPrincipalForm.telaLogin = new TelaLogin(Supermercado.listProdutos);  
         JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);
         janela.getContentPane().remove(TelaPrincipalForm.telaAcessoSistema);
         janela.add(TelaPrincipalForm.telaLogin, BorderLayout.CENTER); 

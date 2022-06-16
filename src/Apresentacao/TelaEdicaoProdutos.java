@@ -2,6 +2,7 @@
 package Apresentacao;
 
 import Dominio.ModuloSupermercado.Produto;
+import Dominio.ModuloSupermercado.Supermercado;
 import java.awt.BorderLayout;
 import java.util.ArrayList;
 import javax.swing.JFrame;
@@ -27,9 +28,9 @@ public class TelaEdicaoProdutos extends javax.swing.JPanel {
          
         ((DefaultTableModel) tb_produtos.getModel()).setRowCount(0);
          
-        for(int i = 0; i < TelaPrincipalForm.listProdutos.size(); i++)
+        for(int i = 0; i < Supermercado.listProdutos.size(); i++)
         { 
-           this.model.insertRow(i, new Object[]{TelaPrincipalForm.listProdutos.get(i).getNome(), TelaPrincipalForm.listProdutos.get(i).getPreco()});
+           this.model.insertRow(i, new Object[]{Supermercado.listProdutos.get(i).getNome(), Supermercado.listProdutos.get(i).getPreco()});
         }
         this.tb_produtos.setModel(model);
     }
@@ -218,13 +219,13 @@ public class TelaEdicaoProdutos extends javax.swing.JPanel {
 
     public void obterProdutoEditado(){
         
-        for (int i = 0; i < TelaPrincipalForm.listProdutos.size(); i++)
+        for (int i = 0; i < Supermercado.listProdutos.size(); i++)
         {
-            if(this.selecionado.equals(TelaPrincipalForm.listProdutos.get(i).getNome()))
+            if(this.selecionado.equals(Supermercado.listProdutos.get(i).getNome()))
             {  
-               TelaPrincipalForm.listProdutos.get(i).setNome(tf_nome.getText());
+                Supermercado.listProdutos.get(i).setNome(tf_nome.getText());
                 double preco = Double.valueOf(tf_preco.getText());
-                TelaPrincipalForm.listProdutos.get(i).setPreco(preco); 
+                Supermercado.listProdutos.get(i).setPreco(preco); 
             }
         }
     }
@@ -255,7 +256,7 @@ public class TelaEdicaoProdutos extends javax.swing.JPanel {
 
     private void bt_voltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_voltarMouseClicked
 
-        TelaPrincipalForm.telaControleProdutos = new TelaControleProdutos(TelaPrincipalForm.listProdutos);
+        TelaPrincipalForm.telaControleProdutos = new TelaControleProdutos(Supermercado.listProdutos);
         JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);
         janela.getContentPane().removeAll();
         janela.add(TelaPrincipalForm.telaControleProdutos, BorderLayout.CENTER);
@@ -275,12 +276,12 @@ public class TelaEdicaoProdutos extends javax.swing.JPanel {
             {
                 this.selecionado = temp.toString();
                 
-                for(int i=0; i < TelaPrincipalForm.listProdutos.size(); i++)
+                for(int i=0; i < Supermercado.listProdutos.size(); i++)
                 {  
-                    if(this.selecionado.equals(TelaPrincipalForm.listProdutos.get(i).getNome()))
+                    if(this.selecionado.equals(Supermercado.listProdutos.get(i).getNome()))
                     {  
                         lb_produtoEditado.setText(selecionado);
-                        produto = (Produto)TelaPrincipalForm.listProdutos.get(i);
+                        produto = (Produto)Supermercado.listProdutos.get(i);
                     }
                 }
             }

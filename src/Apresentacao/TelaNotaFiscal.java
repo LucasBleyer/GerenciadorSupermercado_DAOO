@@ -2,6 +2,7 @@
 package Apresentacao;
 
 import Dominio.ModuloSupermercado.Produto;
+import Dominio.ModuloSupermercado.Supermercado;
 import java.awt.BorderLayout;
 import java.util.ArrayList;
 import javax.swing.JFrame;
@@ -17,11 +18,11 @@ public class TelaNotaFiscal extends javax.swing.JPanel {
         
         tb_carrinho.setEnabled(false);
         
-        for (int i = 0; i < TelaPrincipalForm.listPessoas.size(); i++)
+        for (int i = 0; i < Supermercado.listPessoas.size(); i++)
         {
-            lb_nomeCliente.setText(TelaPrincipalForm.listPessoas.get(i).getNome());
+            lb_nomeCliente.setText(Supermercado.listPessoas.get(i).getNome());
             
-            lb_cpfCliente.setText(TelaPrincipalForm.listPessoas.get(i).getCpf());
+            lb_cpfCliente.setText(Supermercado.listPessoas.get(i).getCpf());
         } 
         
         lb_totalPagar.setText("R$ " +contTotalPagar);
@@ -36,9 +37,9 @@ public class TelaNotaFiscal extends javax.swing.JPanel {
         
         ((DefaultTableModel) tb_carrinho.getModel()).setRowCount(0);
         
-        for(int i = 0; i < TelaPrincipalForm.listCarrinho.size(); i++)
+        for(int i = 0; i < Supermercado.listCarrinho.size(); i++)
         { 
-           this.modelCarrinho.insertRow(i, new Object[]{TelaPrincipalForm.listCarrinho.get(i).getNome(), TelaPrincipalForm.listCarrinho.get(i).getPreco()});
+           this.modelCarrinho.insertRow(i, new Object[]{Supermercado.listCarrinho.get(i).getNome(), Supermercado.listCarrinho.get(i).getPreco()});
         }
         this.tb_carrinho.setModel(modelCarrinho);
     }
@@ -171,7 +172,7 @@ public class TelaNotaFiscal extends javax.swing.JPanel {
 
     private void bt_imprimirNotaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_imprimirNotaMouseClicked
         
-        TelaPrincipalForm.telaAcessoSistema = new TelaAcessoSistema(TelaPrincipalForm.listProdutos);
+        TelaPrincipalForm.telaAcessoSistema = new TelaAcessoSistema();
         JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);
         janela.getContentPane().remove(TelaPrincipalForm.telaNotaFiscal);
         janela.add(TelaPrincipalForm.telaAcessoSistema, BorderLayout.CENTER);
