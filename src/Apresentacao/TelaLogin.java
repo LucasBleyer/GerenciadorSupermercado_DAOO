@@ -22,7 +22,6 @@ public class TelaLogin extends javax.swing.JPanel {
         Supermercado.listPessoas = new ArrayList();
         
         panel_login_adm.setVisible(false);
-        bt_entrar.setEnabled(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -253,14 +252,14 @@ public class TelaLogin extends javax.swing.JPanel {
     }
     
     private void rb_admItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rb_admItemStateChanged
+        
         panel_login_adm.setVisible(true);
         tf_login_adm.setText(tf_nome.getText().toUpperCase());
-        bt_entrar.setEnabled(true);
     }//GEN-LAST:event_rb_admItemStateChanged
 
     private void rb_clienteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rb_clienteItemStateChanged
+
         panel_login_adm.setVisible(false);
-        bt_entrar.setEnabled(true);
     }//GEN-LAST:event_rb_clienteItemStateChanged
 
     private void bt_entrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_entrarMouseClicked
@@ -285,7 +284,7 @@ public class TelaLogin extends javax.swing.JPanel {
         try
         {
             if(!tf_nome.getText().isEmpty() && !tf_cpf.getText().isEmpty() && !tf_login_adm.getText().isEmpty() && !tf_senha_adm.getText().isEmpty())
-            {
+            {   
                 TelaPrincipalForm.telaControleProdutos = new TelaControleProdutos(Supermercado.listProdutos);  
                 JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);
                 janela.getContentPane().remove(TelaPrincipalForm.telaLogin);
@@ -309,6 +308,8 @@ public class TelaLogin extends javax.swing.JPanel {
         {
             if(!tf_nome.getText().isEmpty() && !tf_cpf.getText().isEmpty())
             {
+                bt_entrar.setEnabled(true);
+                
                 TelaPrincipalForm.telaCompraProdutos = new TelaCompraProdutos(Supermercado.listProdutos);  
                 JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);
                 janela.getContentPane().remove(TelaPrincipalForm.telaLogin);

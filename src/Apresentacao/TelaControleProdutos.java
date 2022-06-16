@@ -390,7 +390,7 @@ public class TelaControleProdutos extends javax.swing.JPanel {
             case 0 :
             TelaPrincipalForm.telaLogin = new TelaLogin(Supermercado.listProdutos);
             JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);
-            janela.getContentPane().remove(TelaPrincipalForm.telaControleProdutos);
+            janela.getContentPane().removeAll();
             janela.add(TelaPrincipalForm.telaLogin, BorderLayout.CENTER);
             janela.pack();
             break;
