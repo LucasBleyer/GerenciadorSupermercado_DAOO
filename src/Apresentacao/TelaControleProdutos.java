@@ -240,11 +240,11 @@ public class TelaControleProdutos extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Rockwell", 0, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("<Supermercado");
+        jLabel2.setText("< Supermercado");
 
         jLabel3.setFont(new java.awt.Font("Rockwell", 0, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("do Desenvolvedor/>");
+        jLabel3.setText("do Desenvolvedor />");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -253,7 +253,7 @@ public class TelaControleProdutos extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(159, Short.MAX_VALUE)
+                        .addContainerGap(150, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

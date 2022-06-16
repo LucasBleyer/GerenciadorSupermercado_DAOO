@@ -195,7 +195,7 @@ public class TelaEdicaoProdutos extends javax.swing.JPanel {
                 .addComponent(bt_voltar2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(60, Short.MAX_VALUE)
+                .addContainerGap(82, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49))
         );
@@ -237,11 +237,10 @@ public class TelaEdicaoProdutos extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lb_produtoEditado)
-                                .addGap(48, 48, 48)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                                .addComponent(lb_produtoEditado)))
+                        .addContainerGap(76, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(46, 46, 46))))
         );
@@ -275,7 +274,7 @@ public class TelaEdicaoProdutos extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 6, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
@@ -319,6 +318,7 @@ public class TelaEdicaoProdutos extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Selecione um Produto da tabela!", "Erro!", JOptionPane.ERROR_MESSAGE);
         }
         carregarTabela();
+        limparCampos();
     }//GEN-LAST:event_bt_editarMouseClicked
 
     private void tb_produtosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_produtosMouseClicked
@@ -338,8 +338,13 @@ public class TelaEdicaoProdutos extends javax.swing.JPanel {
                 {  
                     if(this.selecionado.equals(Supermercado.listProdutos.get(i).getNome()))
                     {  
-                        lb_produtoEditado.setText(selecionado);
                         produto = (Produto)Supermercado.listProdutos.get(i);
+                        
+                        lb_produtoEditado.setText(selecionado);
+                        tf_nome.setText(selecionado);
+                        
+                        String str_preco = Double.toString(Supermercado.listProdutos.get(i).getPreco());
+                        tf_preco.setText(str_preco);
                     }
                 }
             }
@@ -382,7 +387,11 @@ public class TelaEdicaoProdutos extends javax.swing.JPanel {
 
     }//GEN-LAST:event_bt_voltar2MouseClicked
 
-
+    public void limparCampos(){
+        tf_nome.setText("");
+        tf_preco.setText("");
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_editar;
     private javax.swing.JButton bt_voltar;
