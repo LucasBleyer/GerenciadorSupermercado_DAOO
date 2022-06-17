@@ -14,10 +14,10 @@ public class TelaCadastroProdutos extends javax.swing.JPanel {
 
     DefaultTableModel model;
     
-    public TelaCadastroProdutos() {
+    public TelaCadastroProdutos(ArrayList<Produto> listProdutos) {
         initComponents();
 
-        Supermercado.listProdutos = new ArrayList();
+        listProdutos = new ArrayList();
         
         this.model = (DefaultTableModel)this.tb_produtos.getModel();
         carregarTabela();

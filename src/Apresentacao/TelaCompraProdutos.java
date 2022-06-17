@@ -409,14 +409,14 @@ public class TelaCompraProdutos extends javax.swing.JPanel {
                             {  
                                 if(this.selecionado.equals(Supermercado.listCarrinho.get(i).getNome()))
                                 {  
+                                    contTotalPagar -= Supermercado.listCarrinho.get(i).getPreco();
+                                    lb_totalPagar.setText("R$ " + contTotalPagar);
+                                    
                                     this.modelCarrinho.removeRow(i);
                                     produto = (Produto) Supermercado.listCarrinho.remove(i);
                                     
                                     this.modelCarrinho = (DefaultTableModel)this.tb_carrinho.getModel();
                                     carregarTabelaCarrinho();
-                                    
-                                    contTotalPagar -= Supermercado.listCarrinho.get(i).getPreco();
-                                    lb_totalPagar.setText("R$ " + contTotalPagar);
                                 }
                             }    
                         }
