@@ -23,10 +23,9 @@ public class TelaCadastroProdutos extends javax.swing.JPanel {
         carregarTabela();
     }
    
-     public void carregarTabela(){
+    public void carregarTabela(){
          
         ((DefaultTableModel) tb_produtos.getModel()).setRowCount(0);
-         
         for(int i = 0; i < Supermercado.listProdutos.size(); i++)
         { 
            this.model.insertRow(i, new Object[]{Supermercado.listProdutos.get(i).getNome(), Supermercado.listProdutos.get(i).getPreco()});
